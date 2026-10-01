@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
+import { NetworkSwitcherComponent } from './core/layout/network-switcher/network-switcher.component';
+import { HeaderComponent } from './core/layout/header/header.component';
+import { FooterComponent } from './core/layout/footer/footer.component';
+import { OrgContextService } from './core/services/org-context.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, RouterOutlet],
+  imports: [RouterOutlet, NetworkSwitcherComponent, HeaderComponent, FooterComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  menuOpen = false;
-
-  closeMenu(): void {
-    this.menuOpen = false;
-  }
+  constructor(readonly orgContext: OrgContextService) {}
 }

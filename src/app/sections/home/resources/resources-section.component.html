@@ -1,0 +1,44 @@
+<section class="resources" id="resources">
+  <div class="resources-container">
+    <div class="resources-header">
+      <div><span class="resources-eyebrow">Resources</span><h2>A growing library<br>of <em>teaching.</em></h2></div>
+      <a class="resources-watch-link" href="https://www.youtube.com/@DrNormanThomas" target="_blank" rel="noopener">Watch on YouTube →</a>
+    </div>
+
+    <div class="youtube-section">
+      <iframe width="100%" height="480" src="https://www.youtube.com/embed/videoseries?list=UUYTXjBoGE1ZK-gk-HGQ_qnw" title="Latest messages from Dr. Norman Thomas" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <div class="resources-grid">
+      <a *ngFor="let resource of resources" [href]="resource.href" target="_blank" rel="noopener" class="resource-card" [class]="'resource-card resource-card--' + resource.id">
+        <div class="resource-art">
+          @if (resource.image) { <img [src]="resource.image" [alt]="resource.title" class="resource-image" loading="lazy" decoding="async"> }
+          @else if (resource.id === 'sermons') { <span class="resource-play" aria-hidden="true">▶</span> }
+          @else { <span class="podcast-title">New Life Podcast</span> }
+          <span class="resource-category">{{ resource.category }}</span>
+        </div>
+        <div class="resource-content">
+          <h3>{{ resource.title }}</h3>
+          <p>{{ resource.description }}</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="estore-band">
+      <div class="estore-copy">
+        <span class="estore-eyebrow">The E-Store</span>
+        <h3>Books &amp; teaching resources by <em>Dr. Norman.</em></h3>
+        <p>Featuring <em>Think Abundance</em> ($15.00) and <em>The Power of Focus Minibook</em> ($7.99) in the E-Store.</p>
+        <p class="salvation-copy"><strong>Salvation Package:</strong> “Welcome to your new life in Christ.” Download Dr. Norman Thomas' books — <em>Now That I Am Saved</em> and <em>The Power of Focus</em> — free.</p>
+        <div class="estore-actions">
+          <a href="https://www.normanthomas.org/site_eng/conteudo/shop.asp" target="_blank" rel="noopener">Shop the E-Store</a>
+          <a href="https://www.normanthomas.org/site_eng/conteudo/salvation_pack.asp" target="_blank" rel="noopener">Free Downloads</a>
+        </div>
+      </div>
+      <div class="free-books">
+        <a href="/assets/now-that-i-am-saved.pdf" target="_blank" rel="noopener"><img src="/assets/book-now-that-i-am-saved.jpg" alt="Now That I Am Saved book cover" loading="lazy"><span>Free PDF</span></a>
+        <a href="/assets/the-power-of-focus.pdf" target="_blank" rel="noopener"><img src="/assets/book-power-of-focus.jpg" alt="The Power of Focus book cover" loading="lazy"><span>Free PDF</span></a>
+      </div>
+    </div>
+  </div>
+</section>

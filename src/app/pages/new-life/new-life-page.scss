@@ -1,0 +1,235 @@
+.nlc-site {
+  --nlc-navy: #0a0d16;
+  --nlc-paper: #f6f4ee;
+  --nlc-copy: #4a5265;
+  --nlc-muted: #8891a6;
+  --nlc-content: 1180px;
+}
+
+.nlc-site {
+  background: var(--nlc-paper);
+  color: #12141a;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.65;
+  overflow: clip;
+}
+.nlc-site *, .nlc-site *::before, .nlc-site *::after { box-sizing: border-box; }
+.nlc-site img { display: block; max-width: 100%; }
+.nlc-site a:not([class]) { color: inherit; }
+.nlc-site a:focus-visible, .nlc-site button:focus-visible, .nlc-site input:focus-visible, .nlc-site textarea:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.nlc-content-width { width: min(var(--nlc-content), calc(100% - 64px)); margin-inline: auto; }
+.nlc-narrow-width { width: min(700px, calc(100% - 64px)); margin-inline: auto; }
+.nlc-light-section { background: var(--nlc-paper); }
+.nlc-dark-section { background: var(--ink); color: #fff; position: relative; overflow: hidden; }
+.nlc-eyebrow { display: block; color: #a8842f; font-size: 11px; font-weight: 700; letter-spacing: 3px; line-height: 1.5; text-transform: uppercase; }
+.nlc-dark-section .nlc-eyebrow, .nlc-hero .nlc-eyebrow, .nlc-mission .nlc-eyebrow { color: var(--gold); }
+.nlc-site h1, .nlc-site h2, .nlc-site h3, .nlc-site h4 { font-family: 'Playfair Display', Georgia, serif; font-weight: 500; line-height: 1.15; text-wrap: balance; }
+.nlc-site h2 { font-size: clamp(32px, 3.4vw, 44px); margin: 14px 0 18px; }
+.nlc-site h2 em, .nlc-site h1 em { color: var(--gold-pale); }
+.nlc-site p { text-wrap: pretty; }
+
+.nlc-header { align-items: center; backdrop-filter: blur(22px) saturate(180%); background: rgba(7,10,18,.88); border-bottom: 1px solid rgba(255,255,255,.08); display: flex; gap: 20px; justify-content: space-between; min-height: 72px; padding: 14px max(28px, calc((100vw - 1240px) / 2)); position: sticky; top: 34px; z-index: 200; }
+.nlc-brand { display: flex; flex: 0 0 auto; flex-direction: column; line-height: 1; text-decoration: none; }
+.nlc-brand > span { color: white; font: 17px/1 'Playfair Display', Georgia, serif; }
+.nlc-brand em { color: var(--gold-pale); }
+.nlc-brand small { color: var(--gold); font-size: 8px; letter-spacing: 1.5px; margin-top: 7px; text-transform: uppercase; }
+.nlc-navigation { align-items: center; display: flex; flex: 1; flex-wrap: wrap; gap: 2px 4px; justify-content: center; }
+.nlc-navigation a { color: rgba(255,255,255,.66); font-size: 10px; letter-spacing: 1px; padding: 7px 8px; text-decoration: none; text-transform: uppercase; white-space: nowrap; }
+.nlc-navigation a:hover { color: var(--gold-pale); }
+.nlc-watch-link { border: 1px solid rgba(201,162,77,.5); color: var(--gold-pale); flex: 0 0 auto; font-size: 10px; letter-spacing: 1px; padding: 10px 18px; text-decoration: none; text-transform: uppercase; }
+.nlc-menu-toggle { display: none; }
+
+.nlc-hero { align-items: center; background: var(--ink); display: flex; min-height: min(82vh, 820px); overflow: hidden; position: relative; }
+.nlc-hero-image, .nlc-hero-shade { height: 100%; inset: 0; position: absolute; width: 100%; }
+.nlc-hero-image { object-fit: cover; object-position: center 25%; opacity: .5; }
+.nlc-hero-shade { background: linear-gradient(100deg, rgba(7,10,18,.95), rgba(7,10,18,.78) 45%, rgba(7,10,18,.35)), linear-gradient(0deg, rgba(7,10,18,.8), transparent 70%); }
+.nlc-hero-copy { margin: auto; max-width: 1180px; padding: 110px 32px 100px; position: relative; width: 100%; z-index: 1; }
+.nlc-hero-copy > * { max-width: 760px; }
+.nlc-hero h1 { color: white; font-size: clamp(38px, 4.8vw, 64px); margin: 16px 0 24px; }
+.nlc-hero-copy p { color: rgba(255,255,255,.72); font-size: 17px; margin: 0 0 36px; max-width: 580px; }
+.nlc-actions { display: flex; flex-wrap: wrap; gap: 16px; }
+.nlc-button { align-items: center; border: 1px solid transparent; cursor: pointer; display: inline-flex; font: 600 11px/1.4 'Inter', sans-serif; justify-content: center; letter-spacing: 1.8px; min-height: 48px; padding: 14px 26px; text-decoration: none; text-transform: uppercase; transition: transform .25s ease, color .25s ease, background .25s ease, border-color .25s ease; }
+.nlc-button:hover { transform: translateY(-2px); }
+.nlc-button-gold { background: linear-gradient(135deg, rgba(232,205,130,.96), rgba(201,162,77,.96)); border-color: rgba(255,255,255,.5); box-shadow: inset 0 1px 0 rgba(255,255,255,.55); color: var(--ink); }
+.nlc-button-outline { background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.3); color: white; }
+.nlc-button-outline:hover { border-color: var(--gold); color: var(--gold-pale); }
+.nlc-button-light-outline { background: rgba(10,13,22,.04); border-color: rgba(10,13,22,.22); color: var(--nlc-navy); }
+.nlc-button-light-outline:hover { border-color: #a8842f; color: #a8842f; }
+
+.nlc-upcoming { background: var(--ink); border-top: 1px solid rgba(255,255,255,.07); color: #fff; padding: 52px 0 54px; }
+.nlc-upcoming-heading { align-items: end; display: flex; gap: 22px; justify-content: space-between; margin: 0 auto 24px; max-width: 1180px; padding: 0 32px; }
+.nlc-upcoming h2 { font-size: clamp(26px, 2.8vw, 36px); margin: 10px 0 0; }
+.nlc-carousel-controls { display: flex; gap: 8px; }
+.nlc-carousel-controls button { background: transparent; border: 1px solid rgba(255,255,255,.22); color: var(--gold-pale); cursor: pointer; font-size: 25px; height: 42px; line-height: 1; width: 42px; }
+.nlc-carousel-controls button:hover { border-color: var(--gold); }
+.nlc-upcoming-track { display: flex; gap: 16px; overflow-x: auto; padding: 4px max(32px, calc((100vw - 1180px) / 2)) 18px; scroll-snap-type: x mandatory; scrollbar-color: rgba(201,162,77,.5) transparent; }
+.nlc-upcoming-card { background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.12); color: white; display: flex; flex: 0 0 min(300px, 78vw); flex-direction: column; min-height: 220px; padding: 24px; scroll-snap-align: start; text-decoration: none; transition: border-color .25s ease, transform .25s ease; }
+.nlc-upcoming-card:hover { border-color: rgba(201,162,77,.65); transform: translateY(-3px); }
+.nlc-upcoming-card.featured { background: linear-gradient(145deg, rgba(201,162,77,.2), rgba(255,255,255,.04)); border-color: rgba(201,162,77,.48); }
+.nlc-upcoming-when, .nlc-event-when { color: var(--gold); font-size: 10px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; }
+.nlc-upcoming-title { font-family: 'Playfair Display', Georgia, serif; font-size: 21px; line-height: 1.25; margin: 14px 0 8px; }
+.nlc-upcoming-detail { color: rgba(255,255,255,.63); font-size: 13px; }
+.nlc-upcoming-go { color: var(--gold-pale); font-size: 11px; letter-spacing: 1px; margin-top: auto; padding-top: 18px; text-transform: uppercase; }
+.nlc-swipe-note { color: rgba(255,255,255,.38); display: none; font-size: 10px; text-align: center; }
+
+.nlc-mission { background: var(--ink); color: rgba(255,255,255,.86); padding: 20px 24px 88px; position: relative; text-align: center; }
+.nlc-mission p { font: 500 clamp(22px, 2.4vw, 30px)/1.5 'Playfair Display', Georgia, serif; margin: auto; max-width: 900px; }
+.nlc-mission .nlc-eyebrow { margin-top: 22px; }
+.nlc-story { padding: 112px 0; }
+.nlc-story-intro { align-items: center; display: grid; gap: 70px; grid-template-columns: 1fr 1fr; }
+.nlc-story-image-wrap { position: relative; }
+.nlc-story-image-wrap img { box-shadow: 0 30px 60px rgba(10,13,22,.25); position: relative; width: 100%; }
+.nlc-image-frame { border: 1px solid rgba(201,162,77,.5); inset: 22px 22px -14px -14px; position: absolute; }
+.nlc-story-copy h2 { color: var(--nlc-navy); }
+.nlc-story-copy p, .nlc-light-card p { color: var(--nlc-copy); }
+.nlc-pastor-address { border-left: 1px solid rgba(201,162,77,.6); display: grid; gap: 5px; margin-top: 28px; padding-left: 22px; }
+.nlc-pastor-address span { color: #a8842f; font-size: 10px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; }
+.nlc-pastor-address strong { color: var(--nlc-navy); font-size: 15px; }
+.nlc-pastor-address small { color: var(--nlc-muted); font-size: 12px; }
+.nlc-pastor-bios { display: grid; gap: 24px; grid-template-columns: repeat(2, 1fr); margin-top: 76px; }
+.nlc-light-card { background: rgba(255,255,255,.62); border: 1px solid rgba(255,255,255,.82); box-shadow: 0 8px 30px rgba(10,13,22,.055), inset 0 1px 0 rgba(255,255,255,.9); padding: 32px; }
+.nlc-light-card h3 { color: var(--nlc-navy); font-size: 21px; margin: 12px 0 10px; }
+.nlc-light-card h3 a { color: inherit; text-decoration: none; }
+.nlc-light-card h3 a:hover { color: #a8842f; }
+.nlc-light-card p { font-size: 14px; margin: 0 0 12px; }
+
+.nlc-visit, .nlc-media, .nlc-giving { padding: 112px 0; }
+.nlc-centered-heading { margin: 0 auto 48px; max-width: 640px; text-align: center; }
+.nlc-centered-heading h2 { margin: 12px 0; }
+.nlc-dark-section .nlc-centered-heading p, .nlc-dark-section p { color: rgba(255,255,255,.62); }
+.nlc-service-grid { display: grid; gap: 18px; grid-template-columns: repeat(4, 1fr); }
+.nlc-service-card { align-items: center; background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.12); display: flex; flex-direction: column; justify-content: center; min-height: 150px; padding: 22px; text-align: center; }
+.nlc-service-card strong { color: var(--gold-pale); font: 500 26px 'Playfair Display', Georgia, serif; margin-bottom: 8px; }
+.nlc-service-card span { color: rgba(255,255,255,.63); font-size: 12px; }
+.nlc-address-line { color: rgba(255,255,255,.5); font-size: 13px; margin: 34px 0 0; text-align: center; }
+.nlc-address-line a { color: inherit; text-decoration: none; }
+.nlc-ministries, .nlc-events { padding: 112px 0; }
+.nlc-ministry-grid { display: grid; gap: 20px; grid-template-columns: repeat(3, 1fr); }
+.nlc-ministry-grid .nlc-light-card { min-height: 190px; padding: 30px; }
+.nlc-ministry-grid h3 { font-size: 19px; }
+.nlc-text-link { color: #a8842f; display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 1.2px; margin-top: 12px; text-decoration: none; text-transform: uppercase; }
+.nlc-text-link:hover { color: var(--nlc-navy); }
+.nlc-feature-event { background: var(--nlc-navy); border-radius: 4px; color: white; display: grid; grid-template-columns: 1.2fr .8fr; margin: 0 auto 24px; max-width: 900px; overflow: hidden; }
+.nlc-feature-event-copy { padding: 42px; }
+.nlc-feature-event h3 { font-size: 26px; margin: 12px 0; }
+.nlc-feature-event p { color: rgba(255,255,255,.62); font-size: 14px; margin: 0 0 22px; }
+.nlc-event-year { align-items: center; background: linear-gradient(150deg,#10141f,#070a12); display: flex; flex-direction: column; justify-content: center; min-height: 220px; }
+.nlc-event-year span { color: var(--gold-pale); font: 500 40px 'Playfair Display', Georgia, serif; }
+.nlc-event-year small { color: rgba(255,255,255,.48); font-size: 10px; letter-spacing: 2px; margin-top: 10px; text-transform: uppercase; }
+.nlc-recurring-grid { display: grid; gap: 18px; grid-template-columns: repeat(3, 1fr); margin-inline: auto; max-width: 900px; }
+.nlc-recurring-grid .nlc-light-card { padding: 26px; }
+.nlc-recurring-grid h3 { font-size: 19px; }
+.nlc-announcement { color: var(--nlc-muted); font-size: 12px; margin: 26px 0 0; text-align: center; }
+.nlc-announcement a { color: #a8842f; }
+
+.nlc-media-heading { align-items: end; display: flex; gap: 24px; justify-content: space-between; margin-bottom: 44px; }
+.nlc-media-heading h2 { margin-bottom: 0; }
+.nlc-media-grid { display: grid; gap: 24px; grid-template-columns: repeat(2, 1fr); }
+.nlc-video-card { background: #04060c; border: 1px solid rgba(201,162,77,.25); border-radius: 4px; overflow: hidden; }
+.nlc-video-frame { aspect-ratio: 16 / 9; position: relative; }
+.nlc-video-frame iframe { border: 0; height: 100%; inset: 0; position: absolute; width: 100%; }
+.nlc-video-caption { padding: 16px 22px; }
+.nlc-video-caption span { color: var(--gold); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; }
+.nlc-video-caption p { margin: 5px 0 0; }
+.nlc-watch-card { align-items: center; background: linear-gradient(150deg,#0d1220,#04060c); border: 1px solid rgba(201,162,77,.25); color: #fff; display: flex; flex-direction: column; justify-content: center; padding: 38px; text-align: center; text-decoration: none; }
+.nlc-watch-card:hover { transform: translateY(-4px); }
+.nlc-play-icon { align-items: center; background: #c9302c; border-radius: 10px; color: white; display: flex; height: 44px; justify-content: center; margin-bottom: 18px; width: 60px; }
+.nlc-watch-card h3 { font-size: 23px; margin: 0 0 8px; }
+.nlc-watch-card p { font-size: 13px; max-width: 300px; }
+.nlc-study-link { margin: 28px 0 0; text-align: center; }
+.nlc-study-link a { color: var(--gold-pale); font-size: 11px; letter-spacing: 1.6px; text-decoration: none; text-transform: uppercase; }
+.nlc-prayer { padding: 112px 0; }
+.nlc-two-column { display: grid; gap: 24px; grid-template-columns: repeat(2, 1fr); }
+.nlc-form-card, .nlc-confessions-card { padding: 40px; }
+.nlc-form-card h2, .nlc-confessions-card h2 { color: var(--nlc-navy); font-size: 26px; margin: 12px 0; }
+.nlc-form-card form, .nlc-contact-form form { display: flex; flex-direction: column; gap: 11px; margin-top: 20px; }
+.nlc-site input, .nlc-site textarea { background: #fff; border: 1px solid rgba(10,13,22,.16); border-radius: 2px; color: var(--nlc-navy); font: 400 14px 'Inter', sans-serif; max-width: 100%; padding: 12px; width: 100%; }
+.nlc-site textarea { resize: vertical; }
+.nlc-site input::placeholder, .nlc-site textarea::placeholder { color: rgba(18,20,26,.48); }
+.nlc-form-card .nlc-button, .nlc-contact-form .nlc-button { align-self: flex-start; }
+.nlc-honeypot, .nlc-sr-only { clip: rect(0,0,0,0); clip-path: inset(50%); height: 1px; overflow: hidden; position: absolute; white-space: nowrap; width: 1px; }
+.nlc-confessions-card { align-self: stretch; }
+.nlc-salvation { padding: 0 0 112px; }
+.nlc-salvation-panel { background: var(--nlc-navy); color: white; display: grid; grid-template-columns: 1.15fr .85fr; overflow: hidden; }
+.nlc-salvation-panel > div:first-child { padding: 48px; }
+.nlc-salvation-panel h2 { font-size: clamp(24px, 2.6vw, 34px); }
+.nlc-salvation-panel p { color: rgba(255,255,255,.62); font-size: 14px; margin: 0 0 24px; max-width: 420px; }
+.nlc-book-links { align-items: center; background: linear-gradient(150deg,#10141f,#070a12); display: flex; gap: 20px; justify-content: center; padding: 34px; }
+.nlc-book-links a { border: 1px solid rgba(201,162,77,.45); color: var(--gold); display: flex; flex: 0 1 140px; flex-direction: column; font-size: 8px; letter-spacing: 1.2px; min-width: 0; text-decoration: none; text-transform: uppercase; }
+.nlc-book-links img { aspect-ratio: 2 / 3; object-fit: cover; width: 100%; }
+.nlc-book-links span { padding: 9px 8px; }
+.nlc-giving { text-align: center; }
+.nlc-giving h2 { margin-bottom: 12px; }
+.nlc-giving p { margin: 0 auto 26px; }
+.nlc-actions-centered { justify-content: center; }
+.nlc-contact { padding: 112px 0; }
+.nlc-contact-grid { display: grid; gap: 18px; grid-template-columns: repeat(4, 1fr); text-align: center; }
+.nlc-contact-grid .nlc-light-card { padding: 26px 18px; }
+.nlc-contact-grid p { color: var(--nlc-copy); font-size: 13px; margin: 8px 0 0; }
+.nlc-contact-grid a { text-decoration: none; }
+.nlc-contact-bottom { display: grid; gap: 24px; grid-template-columns: repeat(2, 1fr); margin-top: 24px; }
+.nlc-contact-form { background: var(--nlc-navy); border-radius: 4px; padding: 36px; }
+.nlc-contact-form h3 { color: white; font-size: 22px; margin: 0; }
+.nlc-contact-form input, .nlc-contact-form textarea { background: rgba(255,255,255,.045); border-color: rgba(255,255,255,.14); color: white; }
+.nlc-contact-form input::placeholder, .nlc-contact-form textarea::placeholder { color: rgba(255,255,255,.48); }
+.nlc-map { border: 1px solid rgba(10,13,22,.12); min-height: 340px; }
+.nlc-map iframe { border: 0; height: 100%; min-height: 340px; width: 100%; }
+
+@media (max-width: 1080px) {
+  .nlc-header { gap: 12px; padding-inline: 20px; }
+  .nlc-navigation a { font-size: 9px; padding-inline: 6px; }
+  .nlc-service-grid { grid-template-columns: repeat(2, 1fr); }
+  .nlc-contact-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 760px) {
+  .nlc-header { min-height: 70px; padding: 10px 20px; }
+  .nlc-brand > span { font-size: 15px; }
+  .nlc-menu-toggle { align-items: center; background: transparent; border: 1px solid rgba(255,255,255,.22); display: flex; flex: 0 0 42px; flex-direction: column; gap: 5px; height: 42px; justify-content: center; margin-left: auto; }
+  .nlc-menu-toggle span { background: var(--gold-pale); height: 1px; width: 18px; }
+  .nlc-navigation { align-items: stretch; background: #080b13; border: 1px solid rgba(201,162,77,.22); display: none; flex-direction: column; gap: 0; left: 0; padding: 10px 20px 18px; position: absolute; right: 0; top: 100%; }
+  .nlc-navigation.is-open { display: flex; }
+  .nlc-navigation a { border-bottom: 1px solid rgba(255,255,255,.07); font-size: 11px; padding: 11px 6px; }
+  .nlc-watch-link { padding: 9px 12px; }
+  .nlc-content-width, .nlc-narrow-width { width: min(100% - 40px, var(--nlc-content)); }
+  .nlc-hero { min-height: 690px; min-height: min(82svh, 760px); }
+  .nlc-hero-copy { padding: 88px 22px 76px; }
+  .nlc-hero-copy p { font-size: 15px; }
+  .nlc-button { padding-inline: 19px; }
+  .nlc-upcoming-heading { align-items: center; padding-inline: 20px; }
+  .nlc-upcoming-track { padding-inline: 20px; }
+  .nlc-story, .nlc-visit, .nlc-ministries, .nlc-events, .nlc-media, .nlc-prayer, .nlc-contact { padding-block: 78px; }
+  .nlc-story-intro { gap: 38px; grid-template-columns: 1fr; }
+  .nlc-story-image-wrap { margin: 0 10px 10px; }
+  .nlc-pastor-bios { gap: 16px; grid-template-columns: 1fr; margin-top: 52px; }
+  .nlc-light-card { padding: 26px; }
+  .nlc-service-grid { gap: 12px; }
+  .nlc-service-card { min-height: 138px; padding: 16px 12px; }
+  .nlc-service-card strong { font-size: 23px; }
+  .nlc-ministry-grid { grid-template-columns: repeat(2, 1fr); }
+  .nlc-feature-event { grid-template-columns: 1fr; }
+  .nlc-feature-event-copy { padding: 30px 26px; }
+  .nlc-event-year { min-height: 150px; }
+  .nlc-recurring-grid { grid-template-columns: 1fr; }
+  .nlc-media-heading { align-items: flex-start; flex-direction: column; }
+  .nlc-media-grid, .nlc-two-column, .nlc-contact-bottom { grid-template-columns: 1fr; }
+  .nlc-form-card, .nlc-confessions-card, .nlc-contact-form { padding: 28px 24px; }
+  .nlc-salvation { padding-bottom: 78px; }
+  .nlc-salvation-panel { grid-template-columns: 1fr; }
+  .nlc-salvation-panel > div:first-child { padding: 34px 26px; }
+  .nlc-book-links { justify-content: flex-start; }
+  .nlc-mission { padding-bottom: 68px; }
+}
+@media (max-width: 480px) {
+  .nlc-brand > span { font-size: 15px; }
+  .nlc-watch-link { font-size: 9px; padding: 8px; }
+  .nlc-upcoming-heading { align-items: end; }
+  .nlc-carousel-controls button { height: 36px; width: 36px; }
+  .nlc-swipe-note { display: block; }
+  .nlc-service-grid, .nlc-ministry-grid, .nlc-contact-grid { grid-template-columns: 1fr; }
+  .nlc-actions { gap: 10px; }
+  .nlc-actions .nlc-button { flex: 1 1 145px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nlc-site *, .nlc-site *::before, .nlc-site *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}

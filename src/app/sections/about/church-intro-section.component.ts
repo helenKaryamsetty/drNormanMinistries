@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-church-intro-section',
   standalone: true,
+  imports: [RouterLink],
   template: `
     <section class="section site-width about-church">
       <div class="about-photo">
@@ -14,7 +16,7 @@ import { Component } from '@angular/core';
         <h2>New Life <em>Church.</em></h2>
         <p>New Life Church International is a church and ministry network based in Lake Charles, Louisiana, with affiliate programs in cities and nations around the world.</p>
         <p>Its work centers on transformative faith, spiritual growth, and developing leaders for service in their communities.</p>
-        <a class="text-link" href="https://nlcinternational.org" target="_blank" rel="noreferrer">Visit New Life Church International <span>↗</span></a>
+        <a class="text-link" routerLink="/new-life">Visit New Life Church International <span>↗</span></a>
       </div>
     </section>
   `,

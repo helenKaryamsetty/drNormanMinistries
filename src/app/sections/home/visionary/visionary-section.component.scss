@@ -1,0 +1,138 @@
+.visionary {
+  background: #070a12;
+  padding: clamp(76px, 8.5vw, 130px) 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.visionary-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: start;
+
+  @media (max-width: 980px) {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  @media (max-width: 780px) {
+    padding: 0 20px;
+    gap: 40px;
+  }
+}
+
+.visionary-portrait {
+  justify-self: center;
+  max-width: 530px;
+  position: relative;
+  width: 100%;
+}
+
+.portrait-frame {
+  position: relative;
+  overflow: visible;
+}
+
+.portrait {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center;
+}
+
+.frame-decoration {
+  position: absolute;
+  inset: 24px 24px -14px -14px;
+  border: 1px solid rgba(201, 162, 77, 0.35);
+  pointer-events: none;
+}
+
+.visionary-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+
+  h2 {
+    font-family: var(--serif);
+    font-size: clamp(38px, 4vw, 58px);
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0 0 28px;
+    line-height: 1.12;
+    em { color: var(--gold-pale); }
+  }
+}
+
+.visionary-eyebrow {
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+.visionary-lead {
+  color: rgba(255,255,255,.72);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.7;
+  margin: 0 0 22px;
+  max-width: 560px;
+}
+
+.visionary-bio {
+  color: rgba(255,255,255,.55);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.7;
+  margin: 0 0 42px;
+  max-width: 560px;
+}
+
+.pillars-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.pillar-card {
+  align-items: flex-start;
+  display: flex;
+  gap: 24px;
+}
+
+.pillar-number {
+  align-items: center;
+  border: 1px solid rgba(201,162,77,.5);
+  color: var(--gold-pale);
+  display: flex;
+  flex: 0 0 46px;
+  font-size: 11px;
+  font-weight: 700;
+  height: 46px;
+  justify-content: center;
+  letter-spacing: 1px;
+}
+
+.pillar-card h3 {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 2px;
+  margin: 0 0 8px;
+  text-transform: uppercase;
+}
+
+.pillar-card p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+}

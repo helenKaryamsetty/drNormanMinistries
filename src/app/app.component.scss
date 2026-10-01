@@ -1,0 +1,11 @@
+.main-content {
+  min-height: calc(100vh - 34px - 68px);
+  padding-top: 68px;
+
+  // The network bar is fixed, so reserve its height before the sticky banner header.
+  &.banner-header {
+    min-height: calc(100vh - 106px);
+    padding-top: 34px;
+  }
+}
+

@@ -1,0 +1,9 @@
+<div class="network-switcher">
+  @for (link of links; track link.id) {
+    @if (link.routerLink) {
+      <a [routerLink]="link.routerLink" class="switcher-link" [class.active]="link.id === orgContext.currentOrg().id">{{ link.label }}</a>
+    } @else {
+      <a [href]="link.href" target="_blank" rel="noopener" class="switcher-link">{{ link.label }}</a>
+    }
+  }
+</div>

@@ -1,0 +1,23 @@
+<section class="visionary" id="visionary">
+  <div class="visionary-container">
+    <div class="visionary-portrait">
+      <div class="portrait-frame">
+        <img src="/assets/dr-norman-portrait.webp" alt="Dr. Norman Thomas, Jr." class="portrait">
+        <div class="frame-decoration"></div>
+      </div>
+    </div>
+
+    <div class="visionary-pillars">
+      <span class="visionary-eyebrow">The Visionary</span>
+      <h2>Wisdom built<br>on <em>Legacy.</em></h2>
+      <p class="visionary-lead">With more than three decades of ministry, Dr. Norman Thomas, Jr. has become a trusted father to leaders. His mandate is clear: to restore the excellence of the Kingdom through education, apostolic alignment, and spiritual mentorship — across nations, generations, and spheres of influence.</p>
+      <p class="visionary-bio">Senior pastor and founder of New Life Church International in Lake Charles, Louisiana, and founder of the School of Faith Bible Institute — with affiliate programs in several U.S. cities and nations around the world. He holds an Honorary Doctorate of Humane Letters from Cornerstone University and served more than 15 years in Juvenile Justice before giving himself fully to the call.</p>
+      <div class="pillars-grid">
+        <div *ngFor="let pillar of pillars" class="pillar-card">
+          <div class="pillar-number">{{ pillar.number }}</div>
+          <div><h3>{{ pillar.title }}</h3><p>{{ pillar.description }}</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,29 @@
+<section class="partnership" id="partner">
+  <div class="partnership-container">
+    <span class="partnership-eyebrow">Partnership</span>
+    <h2>Partner with <em>the Vision.</em></h2>
+    <p class="partnership-intro">Your partnership fuels the ministries, training, and outreach advancing the Kingdom through Dr. Norman Thomas and the Norman Thomas Ministries network.</p>
+
+    <div class="region-toggle">
+      <button 
+        class="toggle-button"
+        [class.active]="selectedRegion === 'usa'"
+        [attr.aria-pressed]="selectedRegion === 'usa'"
+        (click)="toggleRegion('usa')">
+        USA
+      </button>
+      <button 
+        class="toggle-button"
+        [class.active]="selectedRegion === 'za'"
+        [attr.aria-pressed]="selectedRegion === 'za'"
+        (click)="toggleRegion('za')">
+        South Africa
+      </button>
+    </div>
+
+    <div class="partnership-content" aria-live="polite">
+      <a class="giving-link" href="https://normanthomas.donorbox.org/" target="_blank" rel="noopener">{{ currentRegionData.link }}</a>
+      <p>{{ currentRegionData.title }}</p>
+    </div>
+  </div>
+</section>

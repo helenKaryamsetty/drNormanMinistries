@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { LeaderCardComponent } from '../../components/leader-card.component';
-import { SectionHeadingComponent } from '../../components/section-heading.component';
+import { LeaderCardComponent } from '../../shared/ui/cards/leader-card/leader-card.component';
+import { SectionHeadingComponent } from '../../shared/ui/section-heading/section-heading.component';
 
 @Component({
   selector: 'app-leaders-section',

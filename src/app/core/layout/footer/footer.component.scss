@@ -1,0 +1,289 @@
+.footer {
+  background: #04060c;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 90px 0 40px;
+}
+
+.footer-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.footer-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  gap: 60px;
+  margin-bottom: 80px;
+
+  @media (max-width: 640px) {
+    gap: 40px;
+    grid-template-columns: 1fr;
+  }
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-logo-link {
+  text-decoration: none;
+  display: block;
+  margin-bottom: 26px;
+}
+
+.footer-logo {
+  width: 212px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.footer-brand-text {
+  color: rgba(255, 255, 255, 0.5);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 15px;
+  max-width: 340px;
+  margin: 0 0 28px;
+  line-height: 1.7;
+}
+
+.social-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.social-link {
+  text-decoration: none;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.6);
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: #c9a24d;
+    color: #e8cd82;
+  }
+}
+
+.footer-column-title {
+  color: #e8cd82;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin: 0 0 26px;
+  font-family: var(--sans);
+  font-weight: 700;
+}
+
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #e8cd82;
+    }
+  }
+}
+
+.footer-column-text {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13.5px;
+  font-weight: 500;
+  margin: 0 0 22px;
+  max-width: 300px;
+}
+
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 26px;
+}
+
+.contact-link {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 13.5px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #e8cd82;
+  }
+}
+
+.contact-address {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.newsletter-form {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  padding-bottom: 10px;
+  max-width: 320px;
+
+  input {
+    flex: 1;
+    min-width: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 6px 0;
+    color: #ffffff;
+    font-size: 14px;
+    font-family: var(--sans);
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.35);
+    }
+  }
+
+  button {
+    background: none;
+    border: none;
+    color: #c9a24d;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    cursor: pointer;
+    padding: 0;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #e8cd82;
+    }
+  }
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  padding-top: 32px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-copyright {
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.footer-links {
+  display: flex;
+  gap: 28px;
+
+  a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.35);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #e8cd82;
+    }
+  }
+}
+
+// --- Banner footer variant (e.g. New Life Church) ---
+.nlc-footer {
+  background: #04060c;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.52);
+  padding: 52px max(32px, calc((100vw - 1180px) / 2)) 28px;
+
+  h2 {
+    font: 700 10px/1.5 'Inter', sans-serif;
+    letter-spacing: 2px;
+    margin: 0 0 14px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  p,
+  a {
+    color: rgba(255, 255, 255, 0.52);
+    font-size: 12px;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      color: var(--gold-pale);
+    }
+  }
+
+  @media (max-width: 760px) {
+    padding: 42px 20px 24px;
+  }
+}
+
+.nlc-footer-grid {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  margin-bottom: 32px;
+
+  > div:not(:first-child) {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  @media (max-width: 760px) {
+    gap: 26px;
+    grid-template-columns: 1fr 1fr;
+
+    > div:first-child {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+
+    > div:first-child {
+      grid-column: auto;
+    }
+  }
+}
+
+.nlc-copyright {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 11px !important;
+  padding-top: 20px;
+}
+

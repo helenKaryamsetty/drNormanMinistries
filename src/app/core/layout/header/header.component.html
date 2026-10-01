@@ -1,0 +1,62 @@
+@let org = orgContext.currentOrg();
+
+@if (org.headerVariant === 'standard') {
+  <header class="header" [class.scrolled]="isScrolled" id="site-header">
+    <div class="header-container">
+      <a routerLink="/" class="logo-link" (click)="closeMobileMenu()">
+        <img [src]="org.logoUrl" [alt]="org.name" class="logo">
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="nav-desktop">
+        @for (link of org.nav; track link.label) {
+          <a [href]="link.fragment ? '#' + link.fragment : link.href" [target]="link.external ? '_blank' : null"
+            [rel]="link.external ? 'noopener' : null" class="nav-link" (click)="closeMobileMenu()">{{ link.label }}</a>
+        }
+        @if (org.headerCta) {
+          <a [href]="org.headerCta.fragment ? '#' + org.headerCta.fragment : org.headerCta.href" class="nav-link cta-button"
+            (click)="closeMobileMenu()">{{ org.headerCta.label }}</a>
+        }
+      </nav>
+
+      <!-- Mobile Menu Toggle -->
+      <button class="hamburger" (click)="toggleMobileMenu()" aria-label="Menu">
+        ☰
+      </button>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-menu" [class.open]="mobileMenuOpen">
+      @for (link of org.nav; track link.label) {
+        <a [href]="link.fragment ? '#' + link.fragment : link.href" [target]="link.external ? '_blank' : null"
+          [rel]="link.external ? 'noopener' : null" class="mobile-nav-link" (click)="closeMobileMenu()">{{ link.label }}</a>
+      }
+      @if (org.headerCta) {
+        <a [href]="org.headerCta.fragment ? '#' + org.headerCta.fragment : org.headerCta.href" class="mobile-nav-link cta-button"
+          (click)="closeMobileMenu()">{{ org.headerCta.label }}</a>
+      }
+    </nav>
+  </header>
+}
+
+@if (org.headerVariant === 'banner') {
+  <header class="nlc-header">
+    <a class="nlc-brand" href="#top" (click)="closeMobileMenu()">
+      <span>{{ org.brandName }} <em>{{ org.brandAccent }}</em></span>
+      <small>{{ org.brandTagline }}</small>
+    </a>
+    <button class="nlc-menu-toggle" type="button" (click)="toggleMobileMenu()"
+      [attr.aria-expanded]="mobileMenuOpen" aria-controls="orgHeaderNavigation" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="orgHeaderNavigation" class="nlc-navigation" [class.is-open]="mobileMenuOpen" [attr.aria-label]="org.name">
+      @for (link of org.nav; track link.label) {
+        <a [href]="'#' + link.fragment" (click)="closeMobileMenu()">{{ link.label }}</a>
+      }
+    </nav>
+    @if (org.watchLink) {
+      <a class="nlc-watch-link" [href]="'#' + org.watchLink.fragment">{{ org.watchLink.label }}</a>
+    }
+  </header>
+}
+

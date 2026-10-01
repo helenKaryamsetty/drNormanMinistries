@@ -1,0 +1,109 @@
+.school-of-faith {
+  background: #070a12;
+  padding: 112px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.sof-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: center;
+
+  @media (max-width: 980px) {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  @media (max-width: 780px) {
+    padding: 0 20px;
+  }
+}
+
+.sof-content {
+  .sof-eyebrow {
+    color: var(--gold);
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: clamp(36px, 3.8vw, 54px);
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0 0 24px;
+    line-height: 1.14;
+    em { color: var(--gold-pale); }
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.72);
+    margin: 0 0 32px;
+    max-width: 480px;
+    font-weight: 500;
+  }
+
+  .sof-note {
+    border-left: 1px solid rgba(201,162,77,.35);
+    color: rgba(255,255,255,.4);
+    font-size: 12px;
+    margin: 24px 0 0;
+    max-width: 460px;
+    padding-left: 18px;
+  }
+}
+
+.sof-button {
+  background: rgba(201,162,77,.92);
+  border: 1px solid rgba(255,255,255,.4);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.45);
+  color: #070a12;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  padding: 18px 42px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: transform .25s ease, background .25s ease;
+
+  &:hover {
+    background: var(--gold-pale);
+    transform: translateY(-2px);
+  }
+}
+
+.sof-seal {
+  align-items: center;
+  aspect-ratio: 1;
+  background: linear-gradient(150deg,#0d1220,#161e33);
+  border: 1px solid rgba(255,255,255,.07);
+  display: flex;
+  justify-content: center;
+  justify-self: center;
+  max-width: 440px;
+  position: relative;
+  width: 100%;
+
+  > div {
+    align-items: center;
+    border: 1px solid rgba(201,162,77,.18);
+    border-radius: 50%;
+    display: flex;
+    height: 80%;
+    justify-content: center;
+    width: 80%;
+  }
+
+  img { height: auto; object-fit: contain; width: 68%; }
+}

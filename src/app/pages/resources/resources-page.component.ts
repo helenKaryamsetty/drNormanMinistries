@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ActionBannerComponent } from '../../components/action-banner.component';
-import { SitePageHeroComponent } from '../../components/site-page-hero.component';
+import { ActionBannerComponent } from '../../shared/ui/action-banner/action-banner.component';
+import { SitePageHeroComponent } from '../../shared/ui/site-page-hero/site-page-hero.component';
 import { ResourceLibrarySectionComponent } from '../../sections/resources/resource-library-section.component';
 
 @Component({

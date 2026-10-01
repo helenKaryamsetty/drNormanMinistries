@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SitePageHeroComponent } from '../../components/site-page-hero.component';
+import { SitePageHeroComponent } from '../../shared/ui/site-page-hero/site-page-hero.component';
 import { ChurchIntroSectionComponent } from '../../sections/about/church-intro-section.component';
 import { LeadersSectionComponent } from '../../sections/about/leaders-section.component';
 import { ValuesSectionComponent } from '../../sections/about/values-section.component';

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { ActionBannerComponent } from '../../components/action-banner.component';
-import { SitePageHeroComponent } from '../../components/site-page-hero.component';
-import { MinistryCatalogSectionComponent } from '../../sections/ministry-catalog-section.component';
-import { MinistryStatsSectionComponent } from '../../sections/ministry-stats-section.component';
+import { ActionBannerComponent } from '../../shared/ui/action-banner/action-banner.component';
+import { SitePageHeroComponent } from '../../shared/ui/site-page-hero/site-page-hero.component';
+import { MinistryCatalogSectionComponent } from '../../sections/ministries/ministry-catalog-section.component';
+import { MinistryStatsSectionComponent } from '../../sections/ministries/ministry-stats-section.component';
 
 @Component({
   selector: 'app-ministries-page',

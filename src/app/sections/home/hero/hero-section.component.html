@@ -1,0 +1,34 @@
+<section class="hero" id="top" [style.--scroll-parallax]="scrollY * 0.5 + 'px'">
+  <div class="hero-background">
+    <img src="/assets/dr-norman-speaking.webp" alt="Dr. Norman Thomas speaking at a ministry gathering" class="hero-image">
+    <div class="overlay-gradient"></div>
+  </div>
+
+  <div class="sparkles">
+    <div *ngFor="let particle of particlePositions" 
+         class="sparkle" 
+         [style.left]="particle.x + '%'"
+         [style.top]="particle.y + '%'"
+         [style.opacity]="particle.opacity"></div>
+  </div>
+
+  <div class="hero-content">
+    <img src="/assets/ntm-family-lockup.webp" alt="Norman Thomas Ministries family of ministries" class="hero-lockup">
+    <div class="hero-text">
+      <div class="hero-eyebrow"><span>Global Leadership Hub</span></div>
+      <h1>A Global Voice for<br><em>Kingdom Leadership.</em></h1>
+      <p>Dr. Norman Thomas equips believers, leaders, and ministries to grow with wisdom, excellence, and purpose — through a global ecosystem of faith.</p>
+      <div class="hero-ctas">
+        <a href="#ministries" class="cta-button primary">Explore the Ministries</a>
+        <a href="#visionary" class="cta-button secondary">About Dr. Norman</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <span>Scroll to explore</span>
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </div>
+</section>

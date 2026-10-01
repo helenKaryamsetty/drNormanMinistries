@@ -1,0 +1,110 @@
+.partnership {
+  background: #0a0e19;
+  padding: 92px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.partnership-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+  text-align: center;
+
+  @media (max-width: 780px) {
+    padding: 0 20px;
+  }
+}
+
+.region-toggle {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 30px;
+  display: inline-flex;
+  gap: 4px;
+  justify-content: center;
+  margin: 0 auto 28px;
+  padding: 4px;
+}
+
+.toggle-button {
+  background: transparent;
+  border: 0;
+  border-radius: 24px;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 10px 22px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+  &:hover {
+    border-color: rgba(201, 162, 77, 0.4);
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  &.active {
+    background: rgba(201, 162, 77, 0.92);
+    color: #070a12;
+  }
+}
+
+.partnership-eyebrow {
+  color: var(--gold);
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+}
+
+.partnership-container > h2 {
+  color: #fff;
+  font-family: var(--serif);
+  font-size: clamp(32px, 4vw, 50px);
+  font-weight: 500;
+  line-height: 1.15;
+  margin: 0 0 20px;
+
+  em { color: var(--gold-pale); }
+}
+
+.partnership-intro {
+  color: rgba(255,255,255,.68);
+  font-size: 16px;
+  margin: 0 auto 30px;
+  max-width: 560px;
+}
+
+.partnership-content {
+  min-height: 90px;
+  
+  .giving-link {
+    background: linear-gradient(135deg, rgba(232,205,130,.92), rgba(201,162,77,.92));
+    border: 1px solid rgba(255,255,255,.4);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.45);
+    color: #070a12;
+    display: inline-flex;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    padding: 18px 42px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: transform .25s ease;
+
+    &:hover { transform: translateY(-2px); }
+  }
+
+  p { color: rgba(255,255,255,.4); font-size: 12px; margin: 14px 0 0; }
+}
+
+@media (max-width: 600px) {
+  .region-toggle {
+    margin-bottom: 32px;
+  }
+}

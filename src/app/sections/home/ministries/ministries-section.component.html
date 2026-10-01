@@ -1,0 +1,33 @@
+<section class="ministries" id="ministries">
+  <div class="ministries-container">
+    <div class="ministries-header">
+      <span class="ministries-eyebrow">The Ecosystem</span>
+      <h2>Five mandates.<br><em>One vision.</em></h2>
+      <p>Dr. Norman leads a portfolio of ministries, each serving a unique role in advancing the Kingdom globally — unified under one apostolic vision.</p>
+    </div>
+
+    <div class="ministries-grid">
+      @for (ministry of ministries; track ministry.id) {
+        <a [routerLink]="ministry.id === 'nlc' ? ['/new-life'] : null"
+           [href]="ministry.id === 'nlc' ? null : getMinistryLink(ministry.id)"
+           [attr.target]="ministry.id === 'nlc' ? null : '_blank'"
+           [attr.rel]="ministry.id === 'nlc' ? null : 'noopener'"
+           class="ministry-card" [class]="'ministry-card--' + ministry.id">
+          <span class="eco-mark" aria-hidden="true">
+            @if (ministry.image) {
+              <img [src]="ministry.image" [alt]="ministry.imageAlt" loading="lazy" decoding="async">
+            } @else {
+              <svg viewBox="0 0 48 48" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.3">
+                <circle cx="24" cy="26" r="15"/><ellipse cx="24" cy="26" rx="6.5" ry="15"/><path d="M9.6 21h28.8M9.6 31h28.8M24 3.5v9M20 7h8" stroke-linecap="round"/>
+              </svg>
+            }
+          </span>
+          <span class="ministry-category">{{ ministry.category }}</span>
+          <h3>{{ ministry.name }}</h3>
+          <p>{{ ministry.description }}</p>
+          <span class="learn-link">{{ ministry.id === 'nlc' ? 'Visit NLCInternational.org' : 'Explore ' + ministry.name }} <span aria-hidden="true">→</span></span>
+        </a>
+      }
+    </div>
+  </div>
+</section>

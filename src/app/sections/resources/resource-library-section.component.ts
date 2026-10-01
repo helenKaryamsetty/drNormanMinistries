@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ResourceCardComponent, MinistryResource } from '../../components/resource-card.component';
-import { SectionHeadingComponent } from '../../components/section-heading.component';
+import { ResourceCardComponent, MinistryResource } from '../../shared/ui/cards/resource-card/resource-card.component';
+import { SectionHeadingComponent } from '../../shared/ui/section-heading/section-heading.component';
 
 @Component({
   selector: 'app-resource-library-section',

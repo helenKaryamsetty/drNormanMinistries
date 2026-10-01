@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { BookCardComponent, MinistryBook } from '../../components/book-card.component';
-import { SectionHeadingComponent } from '../../components/section-heading.component';
+import { BookCardComponent, MinistryBook } from '../../shared/ui/cards/book-card/book-card.component';
+import { SectionHeadingComponent } from '../../shared/ui/section-heading/section-heading.component';
 
 @Component({
   selector: 'app-book-catalog-section',

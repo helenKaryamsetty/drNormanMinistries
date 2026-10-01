@@ -1,46 +1,6 @@
-<div class="utility-bar">
-  <div class="site-width utility-inner">
-    <span>Lake Charles, Louisiana · Serving leaders around the world</span>
-    <div class="network-links">
-      <a href="https://nlcinternational.org" target="_blank" rel="noreferrer">New Life Church</a>
-      <a href="https://schooloffaithusa.org" target="_blank" rel="noreferrer">School of Faith</a>
-      <a href="https://www.youtube.com/@DrNormanThomas" target="_blank" rel="noreferrer">Watch &amp; listen ↗</a>
-    </div>
-  </div>
-</div>
-<header class="site-header">
-  <div class="site-width header-inner">
-    <a class="brand" routerLink="/" aria-label="Norman Thomas Ministries home" (click)="closeMenu()">
-      <img src="/assets/ntm-logo.webp" alt="" />
-      <span><strong>Norman Thomas</strong><small>MINISTRIES</small></span>
-    </a>
-    <button class="menu-toggle" type="button" (click)="menuOpen = !menuOpen" [attr.aria-expanded]="menuOpen" aria-label="Toggle navigation">
-      <span></span><span></span><span></span>
-    </button>
-    <nav class="main-nav" [class.is-open]="menuOpen" aria-label="Main navigation">
-      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">Home</a>
-      <a routerLink="/ministries" routerLinkActive="active" (click)="closeMenu()">Ministries</a>
-      <a routerLink="/events" routerLinkActive="active" (click)="closeMenu()">Events</a>
-      <a routerLink="/about" routerLinkActive="active" (click)="closeMenu()">About</a>
-      <a routerLink="/resources" routerLinkActive="active" (click)="closeMenu()">Resources</a>
-      <a routerLink="/store" routerLinkActive="active" (click)="closeMenu()">Store</a>
-      <a class="nav-give" routerLink="/giving" routerLinkActive="active" (click)="closeMenu()">Give <span>↗</span></a>
-    </nav>
-  </div>
-</header>
-<main><router-outlet /></main>
-<footer class="site-footer">
-  <div class="site-width footer-main">
-    <div class="footer-brand">
-      <a class="brand" routerLink="/">
-        <img src="/assets/ntm-logo.webp" alt="" />
-        <span><strong>Norman Thomas</strong><small>MINISTRIES</small></span>
-      </a>
-      <p>Equipping believers, leaders, and ministries to grow with wisdom, excellence, and purpose.</p>
-    </div>
-    <div><h3>Explore</h3><a routerLink="/ministries">Our ministries</a><a routerLink="/events">Events &amp; gatherings</a><a routerLink="/about">Our story</a></div>
-    <div><h3>Connect</h3><a routerLink="/resources">Teaching resources</a><a routerLink="/store">Books &amp; store</a><a routerLink="/giving">Partner with us</a></div>
-    <div class="footer-cta"><span class="eyebrow">A place to grow</span><p>Find your place in the story.</p><a class="text-link" routerLink="/ministries">Discover the ministries <span>↗</span></a></div>
-  </div>
-  <div class="site-width footer-bottom"><span>© 2026 Norman Thomas Ministries</span><span>Faith for life. Wisdom for the journey.</span></div>
-</footer>
+<app-network-switcher></app-network-switcher>
+<app-header></app-header>
+<main class="main-content" [class.banner-header]="orgContext.currentOrg().headerVariant === 'banner'">
+  <router-outlet></router-outlet>
+</main>
+<app-footer></app-footer>
