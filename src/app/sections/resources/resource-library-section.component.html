@@ -1,0 +1,7 @@
+<section class="section site-width resources-section">
+  <app-section-heading eyebrow="Read, study, share" title="A library for" accent="every season." aside="Download a book, study the notes, or revisit teaching at your own pace." />
+  <div class="resource-grid">
+    @for (resource of resources; track resource.title) { <app-resource-card [resource]="resource" /> }
+  </div>
+</section>
+  

@@ -5,17 +5,8 @@ import { RouterLink } from '@angular/router';
   selector: 'app-section-heading',
   standalone: true,
   imports: [RouterLink],
-  template: `
-    <div class="section-heading">
-      <div>
-        <span class="eyebrow" [class.eyebrow-light]="light">{{ eyebrow }}</span>
-        <h2>{{ title }} <em>{{ accent }}</em></h2>
-      </div>
-      @if (aside) { <p class="heading-aside" [class.heading-aside-light]="light">{{ aside }}</p> }
-      @if (linkText && link) { <a class="text-link" [class.text-link-light]="light" [routerLink]="link">{{ linkText }} <span>↗</span></a> }
-    </div>
-  `,
-  styles: [':host { display: block; }']
+  templateUrl: './section-heading.component.html',
+  styleUrls: ['./section-heading.component.scss']
 })
 export class SectionHeadingComponent {
   @Input() eyebrow = '';

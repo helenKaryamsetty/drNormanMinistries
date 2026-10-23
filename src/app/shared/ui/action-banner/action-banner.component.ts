@@ -5,26 +5,8 @@ import { RouterLink } from '@angular/router';
   selector: 'app-action-banner',
   standalone: true,
   imports: [RouterLink],
-  template: `
-    <section class="closing-cta">
-      <div class="site-width closing-inner">
-        <span class="eyebrow eyebrow-light">{{ eyebrow }}</span>
-        <h2>{{ title }} <em>{{ accent }}</em></h2>
-        <p>{{ description }}</p>
-        <div class="hero-actions">
-          @if (primaryHref) {
-            <a class="button button-gold" [href]="primaryHref" target="_blank" rel="noreferrer">{{ primaryText }} <span>↗</span></a>
-          } @else {
-            <a class="button button-gold" [routerLink]="primaryLink">{{ primaryText }} <span>↗</span></a>
-          }
-          @if (secondaryText && secondaryLink) {
-            <a class="button button-outline" [routerLink]="secondaryLink">{{ secondaryText }} <span>→</span></a>
-          }
-        </div>
-      </div>
-    </section>
-  `,
-  styles: [':host { display: block; }']
+  templateUrl: './action-banner.component.html',
+  styleUrls: ['./action-banner.component.scss']
 })
 export class ActionBannerComponent {
   @Input() eyebrow = '';

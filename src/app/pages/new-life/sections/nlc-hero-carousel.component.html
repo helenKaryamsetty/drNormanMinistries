@@ -1,0 +1,82 @@
+<div class="nlc-hero-carousel-container" role="region" aria-roledescription="carousel" aria-label="Upcoming events">
+  <div class="nlc-hero-carousel-wrapper">
+    <div class="nlc-hero-carousel-slide nlc-hero-carousel-intro"
+      [class.active]="currentIndex === 0"
+      [attr.aria-hidden]="currentIndex !== 0">
+      <img class="nlc-hero-carousel-intro-image" src="/assets/church-speaking.webp" alt="" fetchpriority="high" decoding="async">
+      <div class="nlc-hero-carousel-overlay"></div>
+      <div class="nlc-hero-carousel-content">
+        <div class="nlc-hero-carousel-text">
+          <span class="nlc-eyebrow">Sunday Encounters — In-Person &amp; Online</span>
+          <h1 class="nlc-hero-carousel-title">New Life for <em>every generation.</em></h1>
+          <p class="nlc-hero-carousel-description">A non-denominational church home in Lake Charles, Louisiana, built on discipleship, practical life-skill teaching from the Word, and real Christian fellowship — since 1999.</p>
+          <div class="nlc-actions">
+            <a class="nlc-button nlc-button-gold" href="https://www.youtube.com/@DrNormanThomas" target="_blank" rel="noopener">Watch Now</a>
+            <a class="nlc-button nlc-button-outline" href="#nlc-mission-title">Plan Your Visit</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    @if (events.length > 0) {
+      @for (event of events; track event.id; let i = $index) {
+        <div 
+          class="nlc-hero-carousel-slide" 
+          [class.active]="i + 1 === currentIndex"
+          [style.backgroundImage]="'url(' + event.image + ')'"
+          [attr.aria-hidden]="i + 1 !== currentIndex">
+          <div class="nlc-hero-carousel-overlay"></div>
+          <div class="nlc-hero-carousel-content">
+            <div class="nlc-hero-carousel-text">
+              <p class="nlc-hero-carousel-date">
+                {{ event.date }}@if (event.time) { <span> · {{ event.time }}</span> }
+              </p>
+              <h2 class="nlc-hero-carousel-title">{{ event.title }}</h2>
+              <p class="nlc-hero-carousel-description">{{ event.description }}</p>
+              @if (event.ctaText && event.ctaLink) {
+                <a [href]="event.ctaLink" class="nlc-hero-carousel-cta"
+                  [attr.target]="event.ctaLink.startsWith('http') ? '_blank' : null"
+                  [attr.rel]="event.ctaLink.startsWith('http') ? 'noopener noreferrer' : null">
+                  {{ event.ctaText }} →
+                </a>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    }
+  </div>
+
+  @if (events.length > 0) {
+    <div class="nlc-hero-carousel-controls" role="group" aria-label="Event carousel controls">
+      <button 
+        type="button" 
+        class="nlc-carousel-btn nlc-carousel-prev"
+        aria-label="Previous event"
+        (click)="previousSlide()">
+        ‹
+      </button>
+      <button 
+        type="button" 
+        class="nlc-carousel-btn nlc-carousel-next"
+        aria-label="Next event"
+        (click)="nextSlide()">
+        ›
+      </button>
+    </div>
+
+    <!-- Dots Navigation -->
+    <div class="nlc-hero-carousel-dots">
+      @for (dot of slideIndexes; track dot) {
+        <button 
+          type="button"
+          class="nlc-carousel-dot"
+          [class.active]="dot === currentIndex"
+          (click)="goToSlide(dot)"
+          [attr.aria-current]="dot === currentIndex ? 'true' : null"
+          [attr.aria-label]="dot === 0 ? 'Go to welcome slide' : 'Go to event ' + dot">
+        </button>
+      }
+    </div>
+  }
+</div>
+  

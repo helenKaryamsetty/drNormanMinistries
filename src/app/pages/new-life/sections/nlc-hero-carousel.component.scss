@@ -1,0 +1,256 @@
+.nlc-hero-carousel-container {
+      inset: 0;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    :host {
+      display: block;
+      inset: 0;
+      position: absolute;
+    }
+
+    .nlc-hero-carousel-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+    }
+
+    .nlc-hero-carousel-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 1400ms cubic-bezier(.4, 0, .2, 1), visibility 0s linear 1400ms;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #07121a;
+    }
+
+    .nlc-hero-carousel-slide.active {
+      opacity: 1;
+      visibility: visible;
+      transition-delay: 0s;
+    }
+
+    .nlc-hero-carousel-text {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 1000ms ease, transform 1200ms cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .nlc-hero-carousel-slide.active .nlc-hero-carousel-text {
+      opacity: 1;
+      transform: none;
+      transition-delay: 350ms;
+    }
+
+    .nlc-hero-carousel-slide:not(.nlc-hero-carousel-intro) {
+      transform: scale(1.04);
+      transition: opacity 1400ms cubic-bezier(.4, 0, .2, 1), transform 6000ms ease-out, visibility 0s linear 1400ms;
+    }
+
+    .nlc-hero-carousel-slide.active:not(.nlc-hero-carousel-intro) {
+      transform: scale(1);
+    }
+
+    .nlc-hero-carousel-intro-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 25%;
+    }
+
+    .nlc-hero-carousel-intro .nlc-eyebrow {
+      color: #d4af37;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .nlc-hero-carousel-intro .nlc-hero-carousel-description { margin-bottom: 2rem; }
+    .nlc-actions { display: flex; flex-wrap: wrap; gap: 16px; }
+
+    .nlc-hero-carousel-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(7, 10, 18, .9), rgba(7, 10, 18, .58) 58%, rgba(7, 10, 18, .25)), linear-gradient(0deg, rgba(7, 10, 18, .55), transparent 55%);
+      z-index: 1;
+    }
+
+    .nlc-hero-carousel-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 2rem;
+      text-align: left;
+      max-width: 1180px;
+      margin-inline: auto;
+    }
+
+    .nlc-hero-carousel-text {
+      max-width: 700px;
+      color: white;
+    }
+
+    .nlc-hero-carousel-date {
+      font-size: 0.875rem;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      margin: 0;
+      opacity: 0.9;
+      margin-bottom: 0.5rem;
+    }
+
+    .nlc-hero-carousel-title {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 700;
+      margin: 1rem 0;
+      line-height: 1.2;
+    }
+
+    .nlc-hero-carousel-title em {
+      font-style: italic;
+      font-weight: 700;
+      color: #d4af37;
+    }
+
+    .nlc-hero-carousel-description {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin: 0 0 1.5rem 0;
+      opacity: 0.95;
+    }
+
+    .nlc-hero-carousel-cta {
+      display: inline-block;
+      background-color: #d4af37;
+      color: #1a1a1a;
+      padding: 0.75rem 2rem;
+      border-radius: 4px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .nlc-hero-carousel-cta:hover {
+      background-color: #e8c547;
+      transform: translateY(-2px);
+    }
+
+    .nlc-hero-carousel-controls {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .nlc-hero-carousel-controls .nlc-carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: auto;
+    }
+
+    .nlc-carousel-prev { left: 20px; }
+    .nlc-carousel-next { right: 20px; }
+
+    .nlc-carousel-btn {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .nlc-carousel-btn:hover {
+      background: rgba(255, 255, 255, 0.5);
+      border-color: white;
+    }
+
+    .nlc-hero-carousel-dots {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 32px;
+      z-index: 10;
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+    }
+
+    .nlc-carousel-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.6);
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .nlc-carousel-dot.active {
+      background: #d4af37;
+      border-color: #d4af37;
+      transform: scale(1.2);
+    }
+
+    .nlc-carousel-dot:hover {
+      border-color: white;
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .nlc-hero-carousel-content {
+        padding: 90px 22px 120px;
+      }
+
+      .nlc-hero-carousel-title {
+        font-size: 2.5rem;
+      }
+
+      .nlc-hero-carousel-description {
+        font-size: 0.9rem;
+      }
+
+      .nlc-carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+      }
+
+      .nlc-carousel-prev { left: 10px; }
+      .nlc-carousel-next { right: 10px; }
+
+      .nlc-hero-carousel-dots {
+        bottom: 20px;
+      }
+    }

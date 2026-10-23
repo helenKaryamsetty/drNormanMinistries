@@ -17,26 +17,8 @@ export interface MinistryCardData {
   selector: 'app-ministry-card',
   standalone: true,
   imports: [RouterLink],
-  template: `
-    <article class="ministry-card">
-      <div class="ministry-card-image" [class.ministry-seal]="ministry.imageIsSeal">
-        <img [src]="ministry.image" [alt]="ministry.imageAlt" />
-      </div>
-      <div class="ministry-card-copy">
-        <span class="eyebrow">{{ ministry.category }}</span>
-        <h3>{{ ministry.title }}</h3>
-        <p>{{ ministry.description }}</p>
-        @if (ministry.route) {
-          <a class="text-link" [routerLink]="ministry.route">{{ ministry.linkText }} <span>↗</span></a>
-        } @else if (ministry.href) {
-          <a class="text-link" [href]="ministry.href" target="_blank" rel="noreferrer">{{ ministry.linkText }} <span>↗</span></a>
-        } @else {
-          <a class="text-link" routerLink="/ministries">{{ ministry.linkText }} <span>↗</span></a>
-        }
-      </div>
-    </article>
-  `,
-  styles: [':host { display: block; }']
+  templateUrl: './ministry-card.component.html',
+  styleUrls: ['./ministry-card.component.scss']
 })
 export class MinistryCardComponent {
   @Input() ministry: MinistryCardData = {

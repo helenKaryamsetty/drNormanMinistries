@@ -1,0 +1,7 @@
+<section class="section site-width">
+  <app-section-heading eyebrow="Speaking & booking" title="Gatherings with" accent="purpose." aside="Conferences, leadership summits, church anniversaries, and executive gatherings focused on leadership, legacy, and Kingdom excellence." />
+  <div class="events-grid">
+    @for (event of events; track event.title) { <app-event-card [event]="event" /> }
+  </div>
+</section>
+  

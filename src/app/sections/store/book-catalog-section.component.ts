@@ -6,16 +6,8 @@ import { SectionHeadingComponent } from '../../shared/ui/section-heading/section
   selector: 'app-book-catalog-section',
   standalone: true,
   imports: [BookCardComponent, SectionHeadingComponent],
-  template: `
-    <section class="section site-width store-section">
-      <app-section-heading eyebrow="Read, reflect, grow" title="Books for the" accent="journey." aside="Books and teaching resources by Dr. Norman Thomas. Complimentary downloads are available in the ministry library." />
-      <div class="book-grid">
-        @for (book of books; track book.title) { <app-book-card [book]="book" /> }
-      </div>
-      <p class="sample-note">Amazon links open retailer search results; check current availability with the seller.</p>
-    </section>
-  `,
-  styles: [':host { display: block; }']
+  templateUrl: './book-catalog-section.component.html',
+  styleUrls: ['./book-catalog-section.component.scss']
 })
 export class BookCatalogSectionComponent {
   books: MinistryBook[] = [

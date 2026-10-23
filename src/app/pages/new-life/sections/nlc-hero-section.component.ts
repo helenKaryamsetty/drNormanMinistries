@@ -5,10 +5,7 @@ import { NlcHeroCarouselComponent } from './nlc-hero-carousel.component';
   selector: 'app-nlc-hero-section',
   standalone: true,
   imports: [NlcHeroCarouselComponent],
-  template: `
-    <section class="nlc-hero" aria-label="Welcome and upcoming events">
-      <app-nlc-hero-carousel />
-    </section>
-  `
+  templateUrl: './nlc-hero-section.component.html',
+  styleUrls: ['./nlc-hero-section.component.scss']
 })
 export class NlcHeroSectionComponent {}

@@ -8,11 +8,7 @@ import { ValuesSectionComponent } from '../../sections/about/values-section.comp
   selector: 'app-about-page',
   standalone: true,
   imports: [SitePageHeroComponent, ChurchIntroSectionComponent, LeadersSectionComponent, ValuesSectionComponent],
-  template: `
-    <app-site-page-hero eyebrow="The people behind the vision" title="Faith shaped by" accent="family and purpose." description="A lifetime of ministry built through teaching, community, and service." image="/assets/lakeside.webp" imageAlt="The lakeside community that inspires the ministry" />
-    <app-church-intro-section />
-    <app-leaders-section />
-    <app-values-section />
-  `
+  templateUrl: './about-page.component.html',
+  styleUrls: ['./about-page.component.scss']
 })
 export class AboutPageComponent {}

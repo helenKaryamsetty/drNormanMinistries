@@ -6,15 +6,8 @@ import { SectionHeadingComponent } from '../../shared/ui/section-heading/section
   selector: 'app-resource-library-section',
   standalone: true,
   imports: [ResourceCardComponent, SectionHeadingComponent],
-  template: `
-    <section class="section site-width resources-section">
-      <app-section-heading eyebrow="Read, study, share" title="A library for" accent="every season." aside="Download a book, study the notes, or revisit teaching at your own pace." />
-      <div class="resource-grid">
-        @for (resource of resources; track resource.title) { <app-resource-card [resource]="resource" /> }
-      </div>
-    </section>
-  `,
-  styles: [':host { display: block; }']
+  templateUrl: './resource-library-section.component.html',
+  styleUrls: ['./resource-library-section.component.scss']
 })
 export class ResourceLibrarySectionComponent {
   resources: MinistryResource[] = [

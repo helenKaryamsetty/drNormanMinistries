@@ -7,6 +7,7 @@ import { MinistriesPageComponent } from './pages/ministries/ministries-page.comp
 import { ResourcesPageComponent } from './pages/resources/resources-page.component';
 import { StorePageComponent } from './pages/store/store-page.component';
 import { NewLifePageComponent } from './pages/new-life/new-life-page.component';
+import { adminGuard } from './core/guards/admin.guard';
 
 export const routes: Routes = [
 	{ path: '', component: HomePageComponent, title: 'Home | Norman Thomas Ministries', data: { orgId: 'ntm' } },
@@ -23,5 +24,24 @@ export const routes: Routes = [
 		data: { orgId: 'nlc' }
 	},
 	{ path: 'nlc-international', redirectTo: 'new-life', pathMatch: 'full' },
+	{
+		path: 'admin/login',
+		loadComponent: () => import('./admin/login/login.component').then(m => m.LoginComponent)
+	},
+	{
+		path: 'admin',
+		canActivate: [adminGuard],
+		loadComponent: () => import('./admin/dashboard/dashboard.component').then(m => m.DashboardComponent)
+	},
+	{
+		path: 'admin/events/new',
+		canActivate: [adminGuard],
+		loadComponent: () => import('./admin/event-editor/event-editor.component').then(m => m.EventEditorComponent)
+	},
+	{
+		path: 'admin/events/:id/edit',
+		canActivate: [adminGuard],
+		loadComponent: () => import('./admin/event-editor/event-editor.component').then(m => m.EventEditorComponent)
+	},
 	{ path: '**', redirectTo: '' }
 ];

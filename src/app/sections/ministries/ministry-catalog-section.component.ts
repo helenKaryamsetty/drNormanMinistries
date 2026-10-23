@@ -6,15 +6,8 @@ import { SectionHeadingComponent } from '../../shared/ui/section-heading/section
   selector: 'app-ministry-catalog-section',
   standalone: true,
   imports: [MinistryCardComponent, SectionHeadingComponent],
-  template: `
-    <section class="section site-width">
-      <app-section-heading eyebrow="The NTM family" title="Room to grow," accent="right where you are." aside="A connected family of churches, training, and leadership communities, each with a distinct part to play." />
-      <div class="ministry-cards">
-        @for (ministry of ministries; track ministry.title) { <app-ministry-card [ministry]="ministry" /> }
-      </div>
-    </section>
-  `,
-  styles: [':host { display: block; }']
+  templateUrl: './ministry-catalog-section.component.html',
+  styleUrls: ['./ministry-catalog-section.component.scss']
 })
 export class MinistryCatalogSectionComponent {
   ministries: MinistryCardData[] = [

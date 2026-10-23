@@ -13,17 +13,7 @@ import { NlcStorySectionComponent } from './sections/nlc-story-section.component
     NlcHeroSectionComponent,
     NlcStorySectionComponent
   ],
-  template: `
-    <div class="nlc-site" id="top">
-      <app-nlc-hero-section />
-      <section class="nlc-mission" aria-labelledby="nlc-mission-title">
-        <p>“It is our desire to promote the Kingdom of God in the earth. We have a passion to teach people the principles of God's Word, regardless of one's race, color, ethnic background, or denominational affiliation. We believe that God transcends all borders and barriers.”</p>
-        <span id="nlc-mission-title" class="nlc-eyebrow">Our Mission</span>
-      </section>
-      <app-nlc-story-section />
-      <app-nlc-gatherings-section />
-      <app-nlc-community-section />
-    </div>
-  `
+  templateUrl: './new-life-page.component.html',
+  styleUrls: ['./new-life-page.component.scss']
 })
 export class NewLifePageComponent {}

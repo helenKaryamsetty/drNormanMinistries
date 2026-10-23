@@ -8,23 +8,8 @@ export interface MinistryStat {
 @Component({
   selector: 'app-ministry-stats-section',
   standalone: true,
-  template: `
-    <section class="stats-band">
-      <div class="site-width stats-inner">
-        <div>
-          <span class="eyebrow eyebrow-light">{{ eyebrow }}</span>
-          <h2>{{ title }} <em>{{ accent }}</em></h2>
-          <p>{{ description }}</p>
-        </div>
-        <div class="stat-list">
-          @for (stat of stats; track stat.label) {
-            <div><strong>{{ stat.value }}</strong><span>{{ stat.label }}</span></div>
-          }
-        </div>
-      </div>
-    </section>
-  `,
-  styles: [':host { display: block; }']
+  templateUrl: './ministry-stats-section.component.html',
+  styleUrls: ['./ministry-stats-section.component.scss']
 })
 export class MinistryStatsSectionComponent {
   @Input() eyebrow = 'A legacy in motion';

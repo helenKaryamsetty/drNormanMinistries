@@ -22,20 +22,8 @@ import { OrgContextService } from '../../core/services/org-context.service';
     ResourcesSectionComponent,
     GlobalImpactSectionComponent
   ],
-  template: `
-    @for (section of orgContext.currentOrg().homeSections ?? []; track section) {
-      @switch (section) {
-        @case ('hero') { <app-hero-section /> }
-        @case ('partnership') { <app-partnership-section /> }
-        @case ('visionary') { <app-visionary-section /> }
-        @case ('ministries') { <app-ministries-section /> }
-        @case ('school-of-faith') { <app-school-of-faith-section /> }
-        @case ('speaking') { <app-speaking-section /> }
-        @case ('resources') { <app-resources-section /> }
-        @case ('global-impact') { <app-global-impact-section /> }
-      }
-    }
-  `
+  templateUrl: './home-page.component.html',
+  styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent {
   constructor(readonly orgContext: OrgContextService) {}

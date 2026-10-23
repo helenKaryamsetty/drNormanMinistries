@@ -6,15 +6,8 @@ import { SectionHeadingComponent } from '../../shared/ui/section-heading/section
   selector: 'app-events-list-section',
   standalone: true,
   imports: [EventCardComponent, SectionHeadingComponent],
-  template: `
-    <section class="section site-width">
-      <app-section-heading eyebrow="Speaking & booking" title="Gatherings with" accent="purpose." aside="Conferences, leadership summits, church anniversaries, and executive gatherings focused on leadership, legacy, and Kingdom excellence." />
-      <div class="events-grid">
-        @for (event of events; track event.title) { <app-event-card [event]="event" /> }
-      </div>
-    </section>
-  `,
-  styles: [':host { display: block; }']
+  templateUrl: './events-list-section.component.html',
+  styleUrls: ['./events-list-section.component.scss']
 })
 export class EventsListSectionComponent {
   events: MinistryEvent[] = [

@@ -7,10 +7,7 @@ import { GivingDetailsSectionComponent } from '../../sections/giving/giving-deta
   selector: 'app-giving-page',
   standalone: true,
   imports: [ActionBannerComponent, SitePageHeroComponent, GivingDetailsSectionComponent],
-  template: `
-    <app-site-page-hero eyebrow="Partner with the vision" title="Generosity in" accent="good company." description="Your partnership sustains teaching, training, and outreach through Norman Thomas Ministries." image="/assets/lakeside.webp" imageAlt="A quiet lakeside landscape" />
-    <app-giving-details-section />
-    <app-action-banner eyebrow="Thank you for being here" title="Generosity makes" accent="community possible." description="We are grateful for your partnership, your prayers, and your care." primaryText="Contact the ministry" primaryHref="mailto:info@normanthomas.org" />
-  `
+  templateUrl: './giving-page.component.html',
+  styleUrls: ['./giving-page.component.scss']
 })
 export class GivingPageComponent {}
