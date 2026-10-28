@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, PLATFORM_ID, Inject } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Subscription } from 'rxjs';
-import { EventsService, CurrentEvent } from '../../../core/services/events.service';
+import { EventsService, CurrentEvent } from '../../../../core/services/events.service';
 
 @Component({
   selector: 'app-nlc-hero-carousel',

@@ -1,23 +1,31 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { SupabaseService } from './supabase.service';
 
 export interface CurrentEvent {
   id: string;
   title: string;
-  description: string;
-  date: string;
-  time?: string;
-  location?: string;
-  image: string;
-  imageAlt: string;
-  ctaText?: string;
-  ctaLink?: string;
+  description: string | null ;
+  date: string | null;
+  time?: string | null;
+  endDate?: string | null;
+  endTime?: string | null;
+  location?: string | null;
+  image: string | null;
+  imageAlt: string | null;
+  ctaText?: string | null;
+  ctaLink?: string | null;
+  category?: string | null;
+  published?: boolean;
+  created_at?: string;
+  updated_at?: string;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventsService {
+  private supabase = inject(SupabaseService);
   private currentEventsSubject = new BehaviorSubject<CurrentEvent[]>(this.getDefaultEvents());
   currentEvents$: Observable<CurrentEvent[]> = this.currentEventsSubject.asObservable();
 
@@ -131,5 +139,162 @@ export class EventsService {
     this.currentEventsSubject.next(
       current.map((e) => (e.id === eventId ? { ...e, ...updates } : e))
     );
+  }
+
+  // ===== Supabase Integration Methods (Admin) =====
+
+  /**
+   * Get all events from Supabase (including drafts) - admin only
+   */
+  async getAllEventsFromSupabase(): Promise<CurrentEvent[]> {
+    const { data, error } = await this.supabase.client
+      .from('events')
+      .select('*')
+      .order('date', { ascending: true });
+
+    if (error) {
+      console.error('Error fetching events from Supabase:', error);
+      return this.getDefaultEvents();
+    }
+
+    return data || [];
+  }
+
+  /**
+   * Get only published events from Supabase - public
+   */
+  async getPublishedEventsFromSupabase(): Promise<CurrentEvent[]> {
+    const { data, error } = await this.supabase.client
+      .from('events')
+      .select('*')
+      .eq('published', true)
+      .order('date', { ascending: true });
+
+    if (error) {
+      console.error('Error fetching published events from Supabase:', error);
+      return this.getDefaultEvents();
+    }
+
+    return data || [];
+  }
+
+  /**
+   * Get a single event by ID from Supabase
+   */
+  async getEventFromSupabase(id: string): Promise<CurrentEvent | null> {
+    const { data, error } = await this.supabase.client
+      .from('events')
+      .select('*')
+      .eq('id', id)
+      .single();
+
+    if (error) {
+      console.error('Error fetching event from Supabase:', error);
+      return null;
+    }
+
+    return data;
+  }
+
+  /**
+   * Create a new event in Supabase
+   */
+  async createEventInSupabase(event: Omit<CurrentEvent, 'id' | 'created_at' | 'updated_at'>): Promise<CurrentEvent | null> {
+    const { data, error } = await this.supabase.client
+      .from('events')
+      .insert([{ ...event, created_at: new Date().toISOString() }])
+      .select()
+      .single();
+
+    if (error) {
+      console.error('Error creating event in Supabase:', error);
+      return null;
+    }
+
+    return data;
+  }
+
+  /**
+   * Update an event in Supabase
+   */
+  async updateEventInSupabase(id: string, updates: Partial<CurrentEvent>): Promise<CurrentEvent | null> {
+    const { data, error } = await this.supabase.client
+      .from('events')
+      .update({ ...updates, updated_at: new Date().toISOString() })
+      .eq('id', id)
+      .select()
+      .single();
+
+    if (error) {
+      console.error('Error updating event in Supabase:', error);
+      return null;
+    }
+
+    return data;
+  }
+
+  /**
+   * Delete an event from Supabase
+   */
+  async deleteEventFromSupabase(id: string): Promise<boolean> {
+    const { error } = await this.supabase.client
+      .from('events')
+      .delete()
+      .eq('id', id);
+
+    if (error) {
+      console.error('Error deleting event from Supabase:', error);
+      return false;
+    }
+
+    return true;
+  }
+
+  /**
+   * Upload an event image to Supabase storage
+   */
+  async uploadEventImage(file: File, eventId: string): Promise<string | null> {
+    const fileName = `${eventId}/${file.name}`;
+
+    const { data, error } = await this.supabase.client.storage
+      .from('event-images')
+      .upload(fileName, file, { upsert: true });
+
+    if (error) {
+      console.error('Error uploading event image:', error);
+      return null;
+    }
+
+    // Return the public URL of the uploaded file
+    const { data: publicData } = this.supabase.client.storage
+      .from('event-images')
+      .getPublicUrl(fileName);
+
+    return publicData?.publicUrl || null;
+  }
+
+  /**
+   * Delete an event image from Supabase storage
+   */
+  async deleteEventImage(imagePath: string): Promise<boolean> {
+    if (!imagePath) return true;
+
+    // Extract the path from the full URL if needed
+    const path = imagePath.includes('/storage/v1/object/public/') 
+      ? imagePath.split('/event-images/')[1] 
+      : imagePath;
+
+    if (!path) return true;
+
+    const { error } = await this.supabase.client.storage
+      .from('event-images')
+      .remove([path]);
+
+    if (error) {
+      console.error('Error deleting event image:', error);
+      return false;
+    }
+
+    return true;
   }
 }

@@ -1,5 +1,5 @@
 import { Component, HostListener } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 import { OrgContextService } from '../../services/org-context.service';
 
 @Component({
@@ -12,8 +12,9 @@ import { OrgContextService } from '../../services/org-context.service';
 export class HeaderComponent {
   isScrolled = false;
   mobileMenuOpen = false;
+  adminMenuOpen = false;
 
-  constructor(readonly orgContext: OrgContextService) {}
+  constructor(readonly orgContext: OrgContextService, private router: Router) {}
 
   @HostListener('window:scroll', ['$event'])
   onScroll() {
@@ -26,5 +27,18 @@ export class HeaderComponent {
 
   closeMobileMenu() {
     this.mobileMenuOpen = false;
+  }
+
+  toggleAdminMenu() {
+    this.adminMenuOpen = !this.adminMenuOpen;
+  }
+
+  closeAdminMenu() {
+    this.adminMenuOpen = false;
+  }
+
+  navigateToAdmin() {
+    this.closeAdminMenu();
+    this.router.navigate(['/admin/login']);
   }
 }

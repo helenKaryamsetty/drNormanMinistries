@@ -38,6 +38,44 @@
       <span class="nlc-eyebrow">Events</span>
       <h2 id="events-title">What's <em>coming up</em></h2>
     </div>
+
+    <!-- Published Events Carousel -->
+    @if (publishedEvents.length > 0) {
+      <div class="nlc-published-events-carousel">
+        <div class="carousel-events">
+          @for (event of publishedEvents; track event.id) {
+            <article class="carousel-event-card">
+              @if (event.image) {
+                <div class="event-image-container">
+                  <img [src]="event.image" [alt]="event.imageAlt || event.title" />
+                </div>
+              }
+              <div class="event-content">
+                <h3>{{ event.title }}</h3>
+                @if (event.date) {
+                  <p class="event-date">
+                    <strong>{{ event.date }}</strong>
+                    @if (event.time) {
+                      <span>at {{ event.time }}</span>
+                    }
+                  </p>
+                }
+                @if (event.location) {
+                  <p class="event-location">📍 {{ event.location }}</p>
+                }
+                @if (event.description) {
+                  <p class="event-description">{{ event.description }}</p>
+                }
+                @if (event.ctaLink) {
+                  <a class="nlc-button nlc-button-gold" [href]="event.ctaLink" target="_blank" rel="noopener">{{ event.ctaText || 'Learn More' }}</a>
+                }
+              </div>
+            </article>
+          }
+        </div>
+      </div>
+    }
+
     <article class="nlc-feature-event">
       <div class="nlc-feature-event-copy">
         <span class="nlc-eyebrow">Featured Event</span>

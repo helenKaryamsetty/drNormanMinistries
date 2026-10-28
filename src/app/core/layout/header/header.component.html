@@ -7,6 +7,18 @@
         <img [src]="org.logoUrl" [alt]="org.name" class="logo">
       </a>
 
+      <!-- Admin Logo Dropdown (small, unobtrusive) -->
+      <div class="admin-logo-dropdown">
+        <button class="admin-logo-button" (click)="toggleAdminMenu()" [attr.aria-expanded]="adminMenuOpen" aria-label="Admin menu">
+          <img src="/assets/ntm-logo.webp" alt="Admin" class="admin-logo">
+        </button>
+        @if (adminMenuOpen) {
+          <div class="admin-dropdown-menu" (click)="closeAdminMenu()">
+            <a (click)="navigateToAdmin()" class="dropdown-item">Admin Module</a>
+          </div>
+        }
+      </div>
+
       <!-- Desktop Navigation -->
       <nav class="nav-desktop">
         @for (link of org.nav; track link.label) {
@@ -41,6 +53,18 @@
 
 @if (org.headerVariant === 'banner') {
   <header class="nlc-header">
+    <!-- Admin Logo Dropdown for NLC -->
+    <div class="admin-logo-dropdown-nlc">
+      <button class="admin-logo-button-nlc" (click)="toggleAdminMenu()" [attr.aria-expanded]="adminMenuOpen" aria-label="Admin menu">
+        <img src="/assets/ntm-logo.webp" alt="Admin" class="admin-logo-nlc">
+      </button>
+      @if (adminMenuOpen) {
+        <div class="admin-dropdown-menu-nlc" (click)="closeAdminMenu()">
+          <a (click)="navigateToAdmin()" class="dropdown-item">Admin Module</a>
+        </div>
+      }
+    </div>
+
     <a class="nlc-brand" href="#top" (click)="closeMobileMenu()">
       <span>{{ org.brandName }} <em>{{ org.brandAccent }}</em></span>
       <small>{{ org.brandTagline }}</small>

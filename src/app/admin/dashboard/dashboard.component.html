@@ -1,3 +1,163 @@
-<section class="admin-dashboard">
-  <h1>Admin dashboard</h1>
-</section>
+<div class="admin-dashboard">
+  <!-- Header -->
+  <div class="dashboard-header">
+    <div class="header-content">
+      <div class="header-title">
+        <h1>Admin Dashboard</h1>
+        <p>Manage events and announcements</p>
+      </div>
+      <button class="logout-button" (click)="logout()">Logout</button>
+    </div>
+  </div>
+
+  <!-- Alerts -->
+  @if (errorMessage) {
+    <div class="alert alert-error">
+      {{ errorMessage }}
+    </div>
+  }
+
+  @if (successMessage) {
+    <div class="alert alert-success">
+      {{ successMessage }}
+    </div>
+  }
+
+  <!-- Statistics Cards -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-value">{{ totalEvents }}</div>
+      <div class="stat-label">Total Events</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">{{ publishedEvents }}</div>
+      <div class="stat-label">Published</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">{{ draftEvents }}</div>
+      <div class="stat-label">Drafts</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">{{ upcomingEvents }}</div>
+      <div class="stat-label">Upcoming</div>
+    </div>
+  </div>
+
+  <!-- Events Management Section -->
+  <div class="events-section">
+    <div class="section-header">
+      <h2>Events & Announcements</h2>
+      <button class="create-button" (click)="navigateToNewEvent()">+ New Event</button>
+    </div>
+
+    <!-- Filters and Search -->
+    <div class="filters-row">
+      <div class="search-box">
+        <input
+          type="text"
+          placeholder="Search events by title, description, or location..."
+          [(ngModel)]="searchQuery"
+          (input)="onSearchChange()"
+          class="search-input"
+        >
+      </div>
+
+      <div class="filter-controls">
+        <select [(ngModel)]="statusFilter" (change)="onStatusFilterChange()" class="filter-select">
+          <option value="all">All Status</option>
+          <option value="published">Published</option>
+          <option value="draft">Drafts</option>
+        </select>
+
+        <select [(ngModel)]="sortBy" (change)="onSortChange()" class="filter-select">
+          <option value="date">Sort by Date</option>
+          <option value="title">Sort by Title</option>
+          <option value="updated">Sort by Last Updated</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Loading State -->
+    @if (isLoading) {
+      <div class="loading-state">
+        <div class="spinner"></div>
+        <p>Loading events...</p>
+      </div>
+    }
+
+    <!-- Events Table -->
+    @if (!isLoading && filteredEvents.length > 0) {
+      <div class="events-table-container">
+        <table class="events-table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Date</th>
+              <th>Location</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (event of filteredEvents; track event.id) {
+              <tr [class.draft]="!event.published">
+                <td>
+                  <div class="event-title">
+                    {{ event.title }}
+                    @if (!event.published) {
+                      <span class="badge badge-draft">Draft</span>
+                    }
+                  </div>
+                </td>
+                <td>{{ formatDate(event.date) }}</td>
+                <td>{{ event.location || 'N/A' }}</td>
+                <td>
+                  <span [class]="'badge ' + (event.published ? 'badge-published' : 'badge-draft')">
+                    {{ event.published ? 'Published' : 'Draft' }}
+                  </span>
+                </td>
+                <td class="actions-cell">
+                  <button
+                    class="action-button edit"
+                    (click)="navigateToEditEvent(event.id)"
+                    title="Edit event"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    class="action-button toggle"
+                    (click)="togglePublish(event)"
+                    [title]="event.published ? 'Unpublish event' : 'Publish event'"
+                  >
+                    {{ event.published ? 'Unpublish' : 'Publish' }}
+                  </button>
+                  <button
+                    class="action-button delete"
+                    (click)="deleteEvent(event)"
+                    title="Delete event"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    }
+
+    <!-- Empty State -->
+    @if (!isLoading && filteredEvents.length === 0) {
+      <div class="empty-state">
+        <div class="empty-icon">📋</div>
+        <h3>No events found</h3>
+        @if (searchQuery || statusFilter !== 'all') {
+          <p>Try adjusting your filters or search terms</p>
+        } @else {
+          <p>Get started by creating your first event</p>
+          <button class="create-button" (click)="navigateToNewEvent()">Create Event</button>
+        }
+      </div>
+    }
+  </div>
+</div>

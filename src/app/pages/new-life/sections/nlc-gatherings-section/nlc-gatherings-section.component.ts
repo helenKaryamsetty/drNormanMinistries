@@ -1,12 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { EventsService, CurrentEvent } from '../../../../core/services/events.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-nlc-gatherings-section',
   standalone: true,
+  imports: [CommonModule],
   templateUrl: './nlc-gatherings-section.component.html',
   styleUrls: ['./nlc-gatherings-section.component.scss']
 })
-export class NlcGatheringsSectionComponent {
+export class NlcGatheringsSectionComponent implements OnInit, OnDestroy {
   services = [
     { time: '8:30 AM', name: 'PowerTalk for Men & Soul-Care for Women' },
     { time: '9:30 AM', name: 'Sunday Worship Services' },
@@ -28,4 +32,30 @@ export class NlcGatheringsSectionComponent {
     { when: 'Sunday 5:30 PM', title: 'Corporate Prayer', detail: 'The whole church gathering to seek God together before evening classes.' },
     { when: 'Sunday 6:30 PM', title: 'School of Faith & Youth', detail: 'Bible institute classes and youth life groups for every generation.' }
   ];
+
+  publishedEvents: CurrentEvent[] = [];
+  isLoadingEvents = false;
+  private eventsSubscription?: Subscription;
+
+  constructor(private eventsService: EventsService) {}
+
+  ngOnInit(): void {
+    this.loadPublishedEvents();
+  }
+
+  async loadPublishedEvents(): Promise<void> {
+    this.isLoadingEvents = true;
+    try {
+      this.publishedEvents = await this.eventsService.getPublishedEventsFromSupabase();
+    } catch (error) {
+      console.error('Error loading published events:', error);
+      this.publishedEvents = [];
+    } finally {
+      this.isLoadingEvents = false;
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.eventsSubscription?.unsubscribe();
+  }
 }

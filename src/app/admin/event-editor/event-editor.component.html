@@ -1,3 +1,252 @@
-<section class="admin-event-editor">
-  <h1>Event editor</h1>
-</section>
+<div class="event-editor-container">
+  <!-- Header -->
+  <div class="editor-header">
+    <div class="header-content">
+      <div class="header-title">
+        <button class="back-button" (click)="goBack()" title="Go back">←</button>
+        <h1>{{ isEditMode ? 'Edit Event' : 'Create New Event' }}</h1>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="editor-content">
+    <!-- Loading State -->
+    @if (isLoading) {
+      <div class="loading-state">
+        <div class="spinner"></div>
+        <p>Loading event...</p>
+      </div>
+    }
+
+    <!-- Form -->
+    @if (!isLoading) {
+      <form [formGroup]="eventForm" (ngSubmit)="onSubmit()" class="event-form">
+        <!-- Alerts -->
+        @if (errorMessage) {
+          <div class="alert alert-error">
+            {{ errorMessage }}
+          </div>
+        }
+
+        @if (successMessage) {
+          <div class="alert alert-success">
+            {{ successMessage }}
+          </div>
+        }
+
+        <div class="form-sections">
+          <!-- Basic Information Section -->
+          <div class="form-section">
+            <h2>Basic Information</h2>
+
+            <div class="form-group">
+              <label for="title">Event Title *</label>
+              <input
+                type="text"
+                id="title"
+                formControlName="title"
+                placeholder="e.g., Sunday Worship Service"
+                [class.error]="eventForm.get('title')?.invalid && eventForm.get('title')?.touched"
+              >
+              @if (eventForm.get('title')?.hasError('required') && eventForm.get('title')?.touched) {
+                <span class="error-text">Title is required</span>
+              }
+            </div>
+
+            <div class="form-group">
+              <label for="description">Description *</label>
+              <textarea
+                id="description"
+                formControlName="description"
+                placeholder="Event description and details..."
+                rows="5"
+                [class.error]="eventForm.get('description')?.invalid && eventForm.get('description')?.touched"
+              ></textarea>
+              @if (eventForm.get('description')?.hasError('required') && eventForm.get('description')?.touched) {
+                <span class="error-text">Description is required</span>
+              }
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="category">Category</label>
+                <input
+                  type="text"
+                  id="category"
+                  formControlName="category"
+                  placeholder="e.g., Worship, Teaching, Community"
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="location">Location</label>
+                <input
+                  type="text"
+                  id="location"
+                  formControlName="location"
+                  placeholder="e.g., New Life Church, Lake Charles, LA"
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Date and Time Section -->
+          <div class="form-section">
+            <h2>Date & Time</h2>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="date">Event Date *</label>
+                <input
+                  type="date"
+                  id="date"
+                  formControlName="date"
+                  [class.error]="eventForm.get('date')?.invalid && eventForm.get('date')?.touched"
+                >
+                @if (eventForm.get('date')?.hasError('required') && eventForm.get('date')?.touched) {
+                  <span class="error-text">Date is required</span>
+                }
+              </div>
+
+              <div class="form-group">
+                <label for="time">Start Time</label>
+                <input
+                  type="time"
+                  id="time"
+                  formControlName="time"
+                  placeholder="09:30"
+                >
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="endDate">End Date (optional)</label>
+                <input
+                  type="date"
+                  id="endDate"
+                  formControlName="endDate"
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="endTime">End Time (optional)</label>
+                <input
+                  type="time"
+                  id="endTime"
+                  formControlName="endTime"
+                  placeholder="10:30"
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Image Section -->
+          <div class="form-section">
+            <h2>Event Image</h2>
+
+            <div class="image-upload-area">
+              @if (!imagePreview) {
+                <label for="imageUpload" class="upload-label">
+                  <div class="upload-icon">📷</div>
+                  <p>Click to upload or drag and drop</p>
+                  <small>PNG, JPG, WebP up to 5MB</small>
+                </label>
+                <input
+                  type="file"
+                  id="imageUpload"
+                  accept="image/*"
+                  (change)="onFileSelected($event)"
+                  hidden
+                >
+              } @else {
+                <div class="image-preview-container">
+                  <img [src]="imagePreview" alt="Event preview" class="image-preview">
+                  <button type="button" class="remove-image-button" (click)="removeImage()">
+                    Remove Image
+                  </button>
+                </div>
+              }
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="imageAlt">Image Alt Text</label>
+                <input
+                  type="text"
+                  id="imageAlt"
+                  formControlName="imageAlt"
+                  placeholder="Description of the image for accessibility"
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA Section -->
+          <div class="form-section">
+            <h2>Call to Action (Optional)</h2>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="ctaText">Button Text</label>
+                <input
+                  type="text"
+                  id="ctaText"
+                  formControlName="ctaText"
+                  placeholder="e.g., Register, Learn More, Join Us"
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="ctaLink">Button Link</label>
+                <input
+                  type="text"
+                  id="ctaLink"
+                  formControlName="ctaLink"
+                  placeholder="e.g., https://example.com or #section"
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Publishing Section -->
+          <div class="form-section">
+            <h2>Publishing</h2>
+
+            <div class="form-group checkbox-group">
+              <label for="published" class="checkbox-label">
+                <input
+                  type="checkbox"
+                  id="published"
+                  formControlName="published"
+                >
+                <span>Publish this event</span>
+              </label>
+              <p class="checkbox-help">Published events will be visible on the public website</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form Actions -->
+        <div class="form-actions">
+          <button type="button" class="button button-secondary" (click)="goBack()">
+            Cancel
+          </button>
+          <button
+            type="submit"
+            class="button button-primary"
+            [disabled]="isSubmitting || eventForm.invalid"
+          >
+            @if (isSubmitting) {
+              <span class="spinner"></span>
+              Saving...
+            } @else {
+              {{ isEditMode ? 'Update Event' : 'Create Event' }}
+            }
+          </button>
+        </div>
+      </form>
+    }
+  </div>
+</div>

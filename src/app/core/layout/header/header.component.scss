@@ -155,4 +155,134 @@
   }
 }
 
+// Admin Logo Dropdown (Standard Header)
+.admin-logo-dropdown {
+  position: relative;
+  margin-right: 20px;
+}
 
+.admin-logo-button {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  .admin-logo {
+    width: 24px;
+    height: 24px;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+  }
+
+  &:hover .admin-logo {
+    opacity: 1;
+  }
+}
+
+.admin-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: rgba(7, 10, 18, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+  padding: 8px 0;
+  margin-top: 4px;
+  z-index: 1000;
+  min-width: 160px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+  .dropdown-item {
+    display: block;
+    padding: 10px 16px;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+
+    &:hover {
+      background: rgba(201, 162, 77, 0.15);
+      color: #e8cd82;
+    }
+  }
+}
+
+// Admin Logo Dropdown (NLC Banner Header)
+.admin-logo-dropdown-nlc {
+  position: relative;
+  order: -1;
+}
+
+.admin-logo-button-nlc {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  .admin-logo-nlc {
+    width: 20px;
+    height: 20px;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+  }
+
+  &:hover .admin-logo-nlc {
+    opacity: 1;
+  }
+}
+
+.admin-dropdown-menu-nlc {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: rgba(7, 10, 18, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+  padding: 8px 0;
+  margin-top: 4px;
+  z-index: 1000;
+  min-width: 160px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+  .dropdown-item {
+    display: block;
+    padding: 10px 16px;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+
+    &:hover {
+      background: rgba(201, 162, 77, 0.15);
+      color: #e8cd82;
+    }
+  }
+}

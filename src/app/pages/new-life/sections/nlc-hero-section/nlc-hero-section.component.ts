@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NlcHeroCarouselComponent } from './nlc-hero-carousel.component';
+import { NlcHeroCarouselComponent } from '../nlc-hero-carousel/nlc-hero-carousel.component';
 
 @Component({
   selector: 'app-nlc-hero-section',

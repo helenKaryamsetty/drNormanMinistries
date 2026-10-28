@@ -1,3 +1,85 @@
-<section class="admin-login">
-  <h1>Admin login</h1>
-</section>
+<div class="admin-login-container">
+  <div class="admin-login-card">
+    <div class="login-header">
+      <img src="/assets/ntm-logo.webp" alt="Admin" class="login-logo">
+      <h1>Admin Portal</h1>
+      <p>Dr. Norman Thomas Ministries</p>
+    </div>
+
+    @if (!isConfigured) {
+      <div class="alert alert-warning">
+        <strong>⚠️ Setup Required</strong>
+        <pre>{{ configErrorMessage }}</pre>
+      </div>
+    }
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form" [class.disabled]="!isConfigured">
+      @if (errorMessage) {
+        <div class="alert alert-error">
+          {{ errorMessage }}
+        </div>
+      }
+
+      @if (successMessage) {
+        <div class="alert alert-success">
+          {{ successMessage }}
+        </div>
+      }
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          placeholder="admin@example.com"
+          [class.error]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
+          [disabled]="!isConfigured"
+        >
+        @if (loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched) {
+          <span class="error-text">Email is required</span>
+        }
+        @if (loginForm.get('email')?.hasError('email') && loginForm.get('email')?.touched) {
+          <span class="error-text">Please enter a valid email</span>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          placeholder="••••••••"
+          [class.error]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+          [disabled]="!isConfigured"
+        >
+        @if (loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched) {
+          <span class="error-text">Password is required</span>
+        }
+        @if (loginForm.get('password')?.hasError('minlength') && loginForm.get('password')?.touched) {
+          <span class="error-text">Password must be at least 6 characters</span>
+        }
+      </div>
+
+      <button
+        type="submit"
+        class="login-button"
+        [disabled]="isLoading || loginForm.invalid || !isConfigured"
+      >
+        @if (isLoading) {
+          <span class="spinner"></span>
+          Signing in...
+        } @else if (!isConfigured) {
+          Configure Supabase First
+        } @else {
+          Sign In
+        }
+      </button>
+    </form>
+
+    <div class="login-footer">
+      <p>For admin access, contact your system administrator.</p>
+    </div>
+  </div>
+</div>

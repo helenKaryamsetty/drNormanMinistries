@@ -1,7 +1,19 @@
 <section class="section site-width">
   <app-section-heading eyebrow="Speaking & booking" title="Gatherings with" accent="purpose." aside="Conferences, leadership summits, church anniversaries, and executive gatherings focused on leadership, legacy, and Kingdom excellence." />
-  <div class="events-grid">
-    @for (event of events; track event.title) { <app-event-card [event]="event" /> }
-  </div>
+  @if (isLoadingEvents) {
+    <div class="loading-state">
+      <p>Loading events...</p>
+    </div>
+  } @else if (events.length > 0) {
+    <div class="events-grid">
+      @for (event of events; track event.title) {
+        <app-event-card [event]="event" />
+      }
+    </div>
+  } @else {
+    <div class="no-events-state">
+      <p>No published events at this time. Check back soon!</p>
+    </div>
+  }
 </section>
   
